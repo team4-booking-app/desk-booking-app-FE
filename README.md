@@ -1,3 +1,7 @@
+# Final project for Swedbank IT Academy 2022
+
+
+
 # DeskBookingApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.1.
