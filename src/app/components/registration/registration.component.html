@@ -1,0 +1,52 @@
+<mat-card class="registration-wrapper">
+  <mat-card-title> User registration </mat-card-title>
+  <mat-card-content>
+    <form
+      class="registration__form"
+      *ngIf="regForm"
+      [formGroup]="regForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <mat-form-field class="form-group">
+        <label for="firstName">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="firstName"
+          formControlName="firstName"
+          placeholder="Enter first name"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-group">
+        <label for="lastName">Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="lastName"
+          formControlName="lastName"
+          placeholder="Enter last name"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          formControlName="email"
+          placeholder="Enter email"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          formControlName="password"
+          placeholder="Enter password"
+        />
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+</mat-card>
