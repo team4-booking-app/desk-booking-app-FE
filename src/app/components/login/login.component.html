@@ -1,61 +1,95 @@
-<div class="login-form-flex">
+<div class="login-form-flex container">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xxl-7 col-sm-7">
+        <div class="card shadow-lg">
+          <div class="card-body p-5">
+            <h1 class="fs-4 card-title fw-bold mb-4 text-center">User login</h1>
 
-<mat-card>
-    <mat-card-title >
-      User login
-    </mat-card-title>
+            <form
+              *ngIf="loginForm"
+              [formGroup]="loginForm"
+              (ngSubmit)="onSubmit()"
+            >
+              <div class="mb-3">
+                <label for="email" class="mb-2 text-muted">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  formControlName="email"
+                  placeholder="Enter email"
+                />
 
-<mat-card-content>
-<form *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <mat-form-field>
-    <div class="form-group">
-       <label for="email">Email</label>
-       <input
-         type="email"
-         class="form-control"
-         id="email"
-         formControlName="email"
-         placeholder="Enter email">
-   
-         <div *ngIf="loginForm.get('email')?.invalid && 
-         (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)" class="alert">
-               Email is required.
-       </div>
+                <div
+                  *ngIf="
+                    loginForm.get('email')?.invalid &&
+                    (loginForm.get('email')?.dirty ||
+                      loginForm.get('email')?.touched)
+                  "
+                  class="alert"
+                >
+                  Email is required.
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <div class="mb-2 w-100">
+                  <label for="password" class="text-muted">Password</label>
+                  <a href="" class="float-end"> Forgot Password? </a>
+                </div>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  formControlName="password"
+                  placeholder="Enter password"
+                />
+
+                <div
+                  *ngIf="
+                    loginForm.get('password')?.invalid &&
+                    (loginForm.get('password')?.dirty ||
+                      loginForm.get('password')?.touched)
+                  "
+                  class="alert"
+                >
+                  Password is required.
+                </div>
+              </div>
+
+              <div class="d-flex align-items-center">
+                <div class="form-check">
+                  <input
+                    type="checkbox"
+                    name="remember"
+                    id="remember"
+                    class="form-check-input"
+                  />
+                  <label for="remember" class="form-check-label"
+                    >Remember Me</label
+                  >
+                </div>
+
+                <button
+                  type="submit"
+                  [disabled]="loginForm.invalid"
+                  class="btn btn-primary ms-auto"
+                >
+                  Login
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="card-footer py-3 border-0">
+            <div class="text-center">
+              Don't have an account?
+              <a href="" class="text-dark">Sign up</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </mat-form-field>
-   
-  <mat-form-field>
-    <div class="form-group">
-       <label for="password">Password</label>
-       <input
-         type="password"
-         class="form-control"
-         id="password"
-         formControlName="password"
-         placeholder="Enter password">
-   
-         <div *ngIf="loginForm.get('password')?.invalid && 
-         (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" class="alert">
-               Password is required.
-       </div>
-    </div>
-  </mat-form-field>
-
-      
-     <div class="form-group">
-       <button mat-stroked-button color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
-     </div>
-   
-    <div>Don't have an account yet?</div>
-     <div class="form-group">
-       <button mat-stroked-button color="primary">
-         Sign up
-       </button>
-     </div>
-   </form>
-
-</mat-card-content>
-  </mat-card>
   </div>
-   
-   
+</div>

@@ -5,8 +5,6 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-registration',
@@ -15,6 +13,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 })
 export class RegistrationComponent implements OnInit {
   regForm: FormGroup = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
     email: new FormControl(''),
     password: new FormControl(''),
   });
