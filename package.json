@@ -10,7 +10,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "postinstall": "ng build --configuration=\"production\""
+    "postinstall": "ng build --configuration development"
   },
   "private": true,
   "dependencies": {
