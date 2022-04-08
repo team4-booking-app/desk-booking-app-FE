@@ -28,7 +28,7 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "src/styles.scss",
+              "src/styles.scss"
               //"node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css"
             ],
             "scripts": []
@@ -102,6 +102,12 @@
         }
       }
     }
+  },
+  "stylePreprocessorOptions": {
+    "includePaths": [
+      "node_modules",
+      "src/assets/styles"
+    ]
   },
   "defaultProject": "desk-booking-app"
 }
