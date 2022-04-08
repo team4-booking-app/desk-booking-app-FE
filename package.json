@@ -2,6 +2,8 @@
   "name": "desk-booking-app",
   "version": "0.0.0",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "webpack-dev-server --mode=development",
     "start-locally": "ng serve",
     "ng": "ng",
     "start": "node server.js",
