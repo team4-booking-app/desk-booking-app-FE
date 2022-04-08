@@ -21,7 +21,7 @@
                   class="form-control form-control-lg"
                 />
                 <div
-                  class="alert"
+                  class="alert alert-danger"
                   *ngIf="
                     regForm.get('firstName')?.errors?.['required'] &&
                     (regForm.get('firstName')?.dirty ||
@@ -41,7 +41,7 @@
                   class="form-control form-control-lg"
                 />
                 <div
-                  class="alert"
+                  class="alert alert-danger"
                   *ngIf="
                     regForm.get('lastName')?.errors?.['required'] &&
                     (regForm.get('lastName')?.dirty ||
@@ -63,20 +63,20 @@
                   email
                 />
                 <div
-                  class="alert"
+                  class="alert alert-danger"
                   *ngIf="
                     (regForm.get('email')?.dirty ||
                       regForm.get('email')?.touched) &&
                     regForm.get('email')?.errors?.['required']
                   "
                 >
-                  Field is required
+                  Field is required.
                 </div>
                 <div
-                  class="alert"
+                  class="alert alert-warning"
                   *ngIf="
-                    (regForm.get('email')?.dirty ||
-                      regForm.get('email')?.touched) &&
+                    regForm.get('email')?.errors &&
+                    regForm.get('email')?.touched &&
                     regForm.get('email')?.invalid
                   "
                 >
@@ -95,9 +95,9 @@
                   minlength="3"
                 />
                 <div
-                  class="alert"
+                  class="alert alert-danger"
                   *ngIf="
-                    regForm.get('password')?.invalid &&
+                    regForm.get('password')?.errors?.['required'] &&
                     (regForm.get('password')?.dirty ||
                       regForm.get('password')?.touched)
                   "
@@ -105,10 +105,10 @@
                   Field is required.
                 </div>
                 <div
-                  class="alert"
+                  class="alert alert-warning"
                   *ngIf="regForm.get('password')?.errors?.['minlength']"
                 >
-                  Password must be at least 4 characters long.
+                  Password must be at least 3 characters long.
                 </div>
               </div>
 
