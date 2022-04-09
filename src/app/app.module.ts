@@ -9,9 +9,16 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegistrationComponent, PageNotFoundComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    RegistrationComponent,
+    PageNotFoundComponent,
+    FooterComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
