@@ -15,9 +15,11 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
+
   });
 
   constructor(private formBuilder: FormBuilder) {}
+  get f() { return this.loginForm.controls; }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -28,3 +30,4 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {}
 }
+

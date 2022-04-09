@@ -1,7 +1,7 @@
-<div class="login-form-flex container">
+<div class="login-form-flex">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-xxl-7 col-sm-7">
+      <div class="col-sm-7">
         <div class="card shadow-lg">
           <div class="card-body p-5">
             <h1 class="fs-4 card-title fw-bold mb-4 text-center text-uppercase text-center">User login</h1>
@@ -17,8 +17,9 @@
                   type="email"
                   class="form-control"
                   id="email"
-                  formControlName="email"
+                  formControlName="email" 
                   placeholder="Enter email"
+                  required
                 />
 
                 <div
@@ -27,7 +28,7 @@
                     (loginForm.get('email')?.dirty ||
                       loginForm.get('email')?.touched)
                   "
-                  class="alert"
+                  class="alert alert-danger"
                 >
                   Email is required.
                 </div>
@@ -42,8 +43,9 @@
                   type="password"
                   class="form-control"
                   id="password"
-                  formControlName="password"
+                  formControlName="password" 
                   placeholder="Enter password"
+                  required
                 />
 
                 <div
@@ -52,7 +54,7 @@
                     (loginForm.get('password')?.dirty ||
                       loginForm.get('password')?.touched)
                   "
-                  class="alert"
+                  class="alert alert-danger"
                 >
                   Password is required.
                 </div>
