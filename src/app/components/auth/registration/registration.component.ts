@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from './../auth.service';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -19,7 +21,9 @@ export class RegistrationComponent implements OnInit {
     password: new FormControl(''),
   });
 
-  constructor(private formBuilder: FormBuilder) {}
+  errors: any = [];
+
+  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.regForm = this.formBuilder.group({
@@ -29,5 +33,17 @@ export class RegistrationComponent implements OnInit {
       password: ['', [Validators.required]],
     });
   }
+  
   onSubmit() {}
+
+  register(): void {
+    this.errors = [];
+    this.auth.register(this.regForm)
+      .subscribe(() => {
+        this.router.navigate(['/auth/login'], { queryParams: { registered: 'success' } });
+       },
+        (errorResponse) => {
+          this.errors.push(errorResponse.error.error);
+        });
+}
 }

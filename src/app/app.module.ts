@@ -3,21 +3,22 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegistrationComponent } from './components/registration/registration.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { OverviewComponent } from './components/overview/overview.component';
+import { AuthComponent } from './components/auth/auth.component';
+import { AuthModule } from './components/auth/auth.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegistrationComponent,
     PageNotFoundComponent,
     FooterComponent,
+    OverviewComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +27,7 @@ import { FooterComponent } from './components/footer/footer.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     NgbModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent],

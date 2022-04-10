@@ -59,8 +59,6 @@
                   id="email"
                   formControlName="email"
                   class="form-control form-control-lg"
-                  ngModel
-                  email
                 />
                 <div
                   class="alert alert-danger"
@@ -127,6 +125,7 @@
 
               <div class="d-flex justify-content-center">
                 <button
+                  (click) = "register()"
                   type="submit"
                   [disabled]="regForm.invalid"
                   class="btn btn-success btn-block btn-lgtext-body"
@@ -137,7 +136,7 @@
 
               <p class="text-center text-muted mt-5 mb-0">
                 Already have an account?
-                <a routerLink="/login" routerLinkActive="active" class="fw-bold text-body">Login here</a>
+                <a routerLink="/auth/login" routerLinkActive="active" class="fw-bold text-body">Login here</a>
               </p>
             </form>
           </div>

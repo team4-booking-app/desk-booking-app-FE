@@ -1,7 +1,7 @@
 <div class="login-form-flex">
   <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-sm-7">
+    <div class="row justify-content-center h-100">
+      <div class="col-12 col-md-9 col-lg-7 col-xl-6">
         <div class="card shadow-lg">
           <div class="card-body p-5">
             <h1 class="fs-4 card-title fw-bold mb-4 text-center text-uppercase text-center">User login</h1>
@@ -76,7 +76,7 @@
                 <button
                   type="submit"
                   [disabled]="loginForm.invalid"
-                  class="btn btn-primary ms-auto"
+                  class="btn btn-success ms-auto"
                 >
                   Login
                 </button>
@@ -88,7 +88,7 @@
             <div class="text-center">
               Don't have an account?
               <a
-                routerLink="/registration"
+                routerLink="/auth/registration"
                 routerLinkActive="active"
                 class="text-dark"
                 >Sign up</a
