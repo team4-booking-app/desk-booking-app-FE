@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Router } from 'express';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({

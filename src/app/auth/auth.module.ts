@@ -11,15 +11,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  {
-    path: 'auth',
-    component: AuthComponent,
-    children: [
-      { path: 'login', component: LoginComponent },
-      { path: 'registration', component: RegistrationComponent },
-      {path: '**', component: PageNotFoundComponent}
-    ]
-  }
+  { path: 'auth/login', component: LoginComponent },
+  { path: 'auth/registration', component: RegistrationComponent },
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({

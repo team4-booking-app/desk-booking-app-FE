@@ -10,7 +10,7 @@ const jwt = new JwtHelperService();
 })
 export class AuthService {
 
-  private uriseg = 'http://localhost:5000/api/users'; //backend port
+  private uriseg = 'https://team4-backend-stage-app.herokuapp.com/api/v1/registration'; //backend port
   private decodedToken: any;
 
   constructor(private http: HttpClient) { }
