@@ -41,9 +41,14 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit({ data }: { data: any }) {
-    this.http.post(
-      'https://team4-backend-stage-app.herokuapp.com/api/v1/registration',
-      data
-    );
+    this.http
+      .post(
+        'https://team4-backend-stage-app.herokuapp.com/api/v1/registration',
+        data
+      )
+      .subscribe((result: any) => {
+        console.warn('result', result);
+      });
+    console.warn(data);
   }
 }
