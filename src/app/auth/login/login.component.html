@@ -9,7 +9,7 @@
             <form
               *ngIf="loginForm"
               [formGroup]="loginForm"
-              (ngSubmit)="onSubmit()"
+              (ngSubmit)="login()"
             >
               <div class="mb-3">
                 <label for="email" class="mb-2 text-muted">Email</label>

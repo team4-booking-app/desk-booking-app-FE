@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './../auth.service';
+import { AuthService } from '../auth.service';
 import {
   FormBuilder,
   FormControl,
@@ -34,8 +34,6 @@ export class RegistrationComponent implements OnInit {
     });
   }
   
-  onSubmit() {}
-
   register(): void {
     this.errors = [];
     this.auth.register(this.regForm)
