@@ -7,18 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { OverviewComponent } from './components/overview/overview.component';
-import { AuthComponent } from './components/auth/auth.component';
-import { AuthModule } from './components/auth/auth.module';
-
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
     FooterComponent,
-    OverviewComponent,
-    AuthComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
