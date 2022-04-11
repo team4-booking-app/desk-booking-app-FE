@@ -5,9 +5,6 @@ import {
   FormControl,
   FormGroup,
   Validators,
-  ValidatorFn,
-  AbstractControl,
-  ValidationErrors,
 } from '@angular/forms';
 
 @Component({
