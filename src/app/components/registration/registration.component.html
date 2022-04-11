@@ -76,7 +76,7 @@
                   class="alert alert-warning"
                   *ngIf="
                     regForm.get('email')?.errors &&
-                    regForm.get('email')?.touched &&
+                    regForm.get('email')?.dirty &&
                     regForm.get('email')?.invalid
                   "
                 >
@@ -104,10 +104,11 @@
                   Field is required.
                 </div>
                 <div
-                  class="alert alert-warning"
-                  *ngIf="regForm.get('password')?.errors"
+                  class="alert alert-danger"
+                  *ngIf="
+                  regForm.get('password')?.errors?.['pattern']"
                 >
-                  Password must be at least 2 characters long.
+                  Pass is wrong.
                 </div>
               </div>
 
@@ -127,7 +128,6 @@
               <div class="d-flex justify-content-center">
                 <button
                   type="submit"
-                  [disabled]="regForm.invalid"
                   class="btn btn-success btn-block btn-lgtext-body"
                 >
                   Register

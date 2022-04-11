@@ -5,6 +5,9 @@ import {
   FormControl,
   FormGroup,
   Validators,
+  ValidatorFn,
+  AbstractControl,
+  ValidationErrors,
 } from '@angular/forms';
 
 @Component({
@@ -29,22 +32,9 @@ export class RegistrationComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: [
         '',
-        [
-          Validators.required,
-          Validators.minLength(2),
-          this.customPasswordValidator(),
-        ],
+        [Validators.required, Validators.pattern('^(?=.*[0-9])(?=.*[A-Z])')],
       ],
     });
-  }
-  customPasswordValidator() {
-    //   //ka cia idet?????
-    //   const hasUpperCase = /[A-Z]+/.test(password);
-    //   const hasNumeric = /[0-9]+/.test(password);
-    //   const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-    //   const hasSymbol = specialChars.test(password);
-    //   const passwordValid = hasUpperCase && hasNumeric && hasSymbol;
-    //   return !passwordValid ? true : false;
   }
 
   onSubmit({ data }: { data: any }) {
