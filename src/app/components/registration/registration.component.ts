@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -19,15 +20,37 @@ export class RegistrationComponent implements OnInit {
     password: new FormControl(''),
   });
 
-  constructor(private formBuilder: FormBuilder) {}
+  get regPassword() {
+    return this.regForm.get('password');
+  }
+  constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.regForm = this.formBuilder.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(RegExp('(?=.*[0-9])(?=.*[A-Z])')),
+        ],
+      ],
+
+      // bandyta '(?=.*?[0-9])(?=.*?[A-Z])$' bet kazkas negeraiiiiii
     });
   }
-  onSubmit() {}
+
+  onSubmit({ data }: { data: any }) {
+    this.http
+      .post(
+        'https://team4-backend-stage-app.herokuapp.com/api/v1/registration',
+        data
+      )
+      .subscribe((result: any) => {
+        console.warn('result', result);
+      });
+    console.warn(data);
+  }
 }

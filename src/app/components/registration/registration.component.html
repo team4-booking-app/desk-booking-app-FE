@@ -7,10 +7,11 @@
             <h2 class="text-uppercase text-center mb-3">User registration</h2>
 
             <form
+              #userPost="ngForm"
               class="reg__form"
               *ngIf="regForm"
               [formGroup]="regForm"
-              (ngSubmit)="onSubmit()"
+              (submit)="onSubmit({ data: userPost.value })"
             >
               <div class="mb-4">
                 <label class="form-label" for="firstName">First name</label>
@@ -23,9 +24,9 @@
                 <div
                   class="alert alert-danger"
                   *ngIf="
-                    regForm.get('firstName')?.errors?.['required'] &&
-                    (regForm.get('firstName')?.dirty ||
-                      regForm.get('firstName')?.touched)
+                    regForm.controls['firstName'].errors?.['required'] &&
+                    (regForm.controls['firstName']?.dirty ||
+                      regForm.controls['firstName']?.touched)
                   "
                 >
                   Field is required.
@@ -43,9 +44,9 @@
                 <div
                   class="alert alert-danger"
                   *ngIf="
-                    regForm.get('lastName')?.errors?.['required'] &&
-                    (regForm.get('lastName')?.dirty ||
-                      regForm.get('lastName')?.touched)
+                    regForm.controls['lastName'].errors?.['required'] &&
+                    (regForm.controls['lastName']?.dirty ||
+                      regForm.controls['lastName']?.touched)
                   "
                 >
                   Field is required.
@@ -65,9 +66,9 @@
                 <div
                   class="alert alert-danger"
                   *ngIf="
-                    (regForm.get('email')?.dirty ||
-                      regForm.get('email')?.touched) &&
-                    regForm.get('email')?.errors?.['required']
+                    (regForm.controls['email']?.dirty ||
+                      regForm.controls['email']?.touched) &&
+                   regForm.controls['email'].errors?.['required']
                   "
                 >
                   Field is required.
@@ -75,9 +76,9 @@
                 <div
                   class="alert alert-warning"
                   *ngIf="
-                    regForm.get('email')?.errors &&
-                    regForm.get('email')?.touched &&
-                    regForm.get('email')?.invalid
+                    regForm.controls['email']?.errors &&
+                    regForm.controls['email']?.dirty &&
+                    regForm.controls['email'].errors?.['email']
                   "
                 >
                   Email is invalid.
@@ -92,23 +93,23 @@
                   formControlName="password"
                   class="form-control form-control-lg"
                   required
-                  minlength="3"
                 />
                 <div
                   class="alert alert-danger"
                   *ngIf="
-                    regForm.get('password')?.errors?.['required'] &&
-                    (regForm.get('password')?.dirty ||
-                      regForm.get('password')?.touched)
+                    regPassword?.errors?.['required'] &&
+                    (regForm.controls['password']?.dirty ||
+                      regForm.controls['password']?.touched)
                   "
                 >
                   Field is required.
                 </div>
                 <div
-                  class="alert alert-warning"
-                  *ngIf="regForm.get('password')?.errors?.['minlength']"
+                  class="alert alert-danger"
+                  *ngIf="
+                  regPassword?.errors?.['pattern']"
                 >
-                  Password must be at least 3 characters long.
+                  Password is incorrect.
                 </div>
               </div>
 
@@ -128,7 +129,6 @@
               <div class="d-flex justify-content-center">
                 <button
                   type="submit"
-                  [disabled]="regForm.invalid"
                   class="btn btn-success btn-block btn-lgtext-body"
                 >
                   Register
@@ -137,7 +137,12 @@
 
               <p class="text-center text-muted mt-5 mb-0">
                 Already have an account?
-                <a routerLink="/login" routerLinkActive="active" class="fw-bold text-body">Login here</a>
+                <a
+                  routerLink="/login"
+                  routerLinkActive="active"
+                  class="fw-bold text-body"
+                  >Login here</a
+                >
               </p>
             </form>
           </div>
