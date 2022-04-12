@@ -79,7 +79,7 @@
                     regForm.controls['email'].errors?.['email']
                   "
                 >
-                  Email is invalid.
+                Email should contain "@" symbol.
                 </div>
               </div>
 
@@ -107,7 +107,7 @@
                   *ngIf="
                   regPassword?.errors?.['pattern']"
                 >
-                  Password is incorrect.
+                Password should contain at least 1 digit and 1 uppercase letter.
                 </div>
               </div>
 

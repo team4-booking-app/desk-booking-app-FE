@@ -48,17 +48,11 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-  register(): void {
-    this.errors = [];
-    this.auth.register(this.regForm).subscribe(
-      () => {
-        this.router.navigate(['/auth/login'], {
-          queryParams: { registered: 'success' },
-        }); // jei success, nukreipia i login
-      },
-      (errorResponse) => {
-        this.errors.push(errorResponse.error.error);
-      }
-    );
-  }
+  register() {
+    this.auth.register(this.regForm).subscribe((result: any) => {
+      console.warn('result', result);
+    });
 }
+}
+
+
