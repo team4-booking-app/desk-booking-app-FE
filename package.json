@@ -2,14 +2,13 @@
   "name": "desk-booking-app",
   "version": "0.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "ng test",
     "serve": "webpack-dev-server --mode=development",
     "start-locally": "ng serve",
     "ng": "ng",
     "start": "node server.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
     "postinstall": "ng build --configuration development"
   },
   "private": true,
@@ -23,6 +22,7 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "@auth0/angular-jwt": "^5.0.2",
     "@ng-bootstrap/ng-bootstrap": "^12.0.1",
     "@popperjs/core": "^2.10.2",
     "bootstrap": "^5.1.3",

@@ -1,11 +1,12 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -20,10 +21,17 @@ export class RegistrationComponent implements OnInit {
     password: new FormControl(''),
   });
 
+  errors: any = [];
+
   get regPassword() {
     return this.regForm.get('password');
   }
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private auth: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.regForm = this.formBuilder.group({
@@ -40,15 +48,11 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-  onSubmit({ data }: { data: any }) {
-    this.http
-      .post(
-        'https://team4-backend-stage-app.herokuapp.com/api/v1/registration',
-        data
-      )
-      .subscribe((result: any) => {
-        console.warn('result', result);
-      });
-    console.warn(data);
-  }
+  register() {
+    this.auth.register(this.regForm).subscribe((result: any) => {
+      console.warn('result', result);
+    });
 }
+}
+
+

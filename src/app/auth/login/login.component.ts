@@ -5,6 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,11 +18,13 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
-
   });
 
-  constructor(private formBuilder: FormBuilder) {}
-  get f() { return this.loginForm.controls; }
+  errors: any = [];
+  notify!: string;
+
+  constructor(private auth: AuthService, private router: Router, private formBuilder: FormBuilder, private route: ActivatedRoute) {}
+ 
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -28,6 +33,8 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit() {}
+  login(): void {
+  }
+  
 }
 

@@ -1,6 +1,6 @@
 <div class="login-form-flex">
   <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center h-100">
       <div class="col-12 col-md-9 col-lg-7 col-xl-6">
         <div class="card shadow-lg">
           <div class="card-body p-5">
@@ -9,7 +9,7 @@
             <form
               *ngIf="loginForm"
               [formGroup]="loginForm"
-              (ngSubmit)="onSubmit()"
+              (ngSubmit) = "login()"
             >
               <div class="mb-3">
                 <label for="email" class="mb-2 text-muted">Email</label>
@@ -19,19 +19,31 @@
                   id="email"
                   formControlName="email" 
                   placeholder="Enter email"
-                  required
+                  ngModel
+                  email
                 />
 
                 <div
-                  *ngIf="
-                    loginForm.get('email')?.invalid &&
-                    (loginForm.get('email')?.dirty ||
-                      loginForm.get('email')?.touched)
-                  "
+                *ngIf="
+                (loginForm.controls['email']?.dirty ||
+                loginForm.controls['email']?.touched) &&
+                loginForm.controls['email'].errors?.['required']
+              "
                   class="alert alert-danger"
                 >
                   Email is required.
                 </div>
+
+                <div
+                class="alert alert-warning"
+                *ngIf="
+                loginForm.controls['email']?.errors &&
+                loginForm.controls['email']?.dirty &&
+                loginForm.controls['email'].errors?.['email']
+              "
+              >
+                Email is invalid.
+              </div>
               </div>
 
               <div class="mb-3">
@@ -45,15 +57,14 @@
                   id="password"
                   formControlName="password" 
                   placeholder="Enter password"
-                  required
                 />
 
                 <div
-                  *ngIf="
-                    loginForm.get('password')?.invalid &&
-                    (loginForm.get('password')?.dirty ||
-                      loginForm.get('password')?.touched)
-                  "
+                *ngIf="
+                (loginForm.get('password')?.dirty ||
+                loginForm.get('password')?.touched) &&
+                loginForm.get('password')?.errors?.['required']
+              "
                   class="alert alert-danger"
                 >
                   Password is required.
@@ -76,7 +87,7 @@
                 <button
                   type="submit"
                   [disabled]="loginForm.invalid"
-                  class="btn btn-primary ms-auto"
+                  class="btn btn-success ms-auto"
                 >
                   Login
                 </button>
@@ -88,7 +99,7 @@
             <div class="text-center">
               Don't have an account?
               <a
-                routerLink="/registration"
+                routerLink="/auth/registration"
                 routerLinkActive="active"
                 class="text-dark"
                 >Sign up</a
