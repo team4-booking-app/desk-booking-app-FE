@@ -48,9 +48,10 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-  register() {
-console.log(this.regForm);
-    }
+  register(): void {
+    this.auth.register(this.regForm);
+    console.log(this.regForm)
+  }
 }
 
 
