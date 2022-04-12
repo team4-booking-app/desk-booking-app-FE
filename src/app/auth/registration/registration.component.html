@@ -10,7 +10,7 @@
               class="reg__form"
               *ngIf="regForm"
               [formGroup]="regForm"
-              (ngSubmit)="register()"
+              (ngSubmit) = "register()"
             >
               <div class="mb-4">
                 <label class="form-label" for="firstName">First name</label>
@@ -125,7 +125,6 @@
 
               <div class="d-flex justify-content-center">
                 <button
-                  (click) = "register()"
                   type="submit"
                   [disabled]="regForm.invalid"
                   class="btn btn-success btn-block btn-lgtext-body"

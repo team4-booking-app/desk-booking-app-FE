@@ -38,7 +38,7 @@ export class RegistrationComponent implements OnInit {
     this.errors = [];
     this.auth.register(this.regForm)
       .subscribe(() => {
-        this.router.navigate(['/auth/login'], { queryParams: { registered: 'success' } });
+        this.router.navigate(['/auth/login'], { queryParams: { registered: 'success' } }); // jei success, nukreipia i login
        },
         (errorResponse) => {
           this.errors.push(errorResponse.error.error);

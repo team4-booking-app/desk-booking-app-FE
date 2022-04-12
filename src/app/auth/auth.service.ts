@@ -10,19 +10,19 @@ const jwt = new JwtHelperService();
 })
 export class AuthService {
 
-  private uriseg = 'https://team4-backend-stage-app.herokuapp.com/api/v1/registration'; //backend port
+  private url = 'https://team4-backend-stage-app.herokuapp.com/api/v1'; 
   private decodedToken: any;
 
   constructor(private http: HttpClient) { }
 
-  public register(userData: any): Observable<any> {
-    const URI = this.uriseg + '/registration';
-    return this.http.post(URI, userData);
+  public register(data: any): Observable<any> {
+    const URI = this.url + '/registration';
+    return this.http.post(URI, data);
   }
 
-  public login(userData: any): Observable<any> {
-    const URI = this.uriseg + '/login';
-    return this.http.post(URI, userData).pipe(map(token => {
+  public login(data: any): Observable<any> {
+    const URI = this.url + '/login';
+    return this.http.post(URI, data).pipe(map(token => {
       return this.saveToken(token);
     }));
   }
