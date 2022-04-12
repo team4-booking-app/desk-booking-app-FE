@@ -20,17 +20,16 @@ export class AuthService {
     return this.http.post(URI, data);
   }
 
-  public login(data: any): Observable<any> {
-    const URI = this.url + '/login';
-    return this.http.post(URI, data).pipe(map(token => {
-      return this.saveToken(token);
-    }));
+  // public login(data: any): Observable<any> {
+  //   const URI = this.url + '/login';
+  //   return this.http.post(URI, data).pipe(map(token => {
+  //     return this.saveToken(token);
+  //   }));
   }
 
-  private saveToken(token: any): any {
-    this.decodedToken = jwt.decodeToken(token);
-    localStorage.setItem('auth_tkn', token);
-    localStorage.setItem('auth_meta', JSON.stringify(this.decodedToken));
-    return token;
-  }
-}
+  // private saveToken(token: any): any {
+  //   this.decodedToken = jwt.decodeToken(token);
+  //   localStorage.setItem('auth_tkn', token);
+  //   localStorage.setItem('auth_meta', JSON.stringify(this.decodedToken));
+  //   return token;
+  

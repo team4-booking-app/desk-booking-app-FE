@@ -49,10 +49,9 @@ export class RegistrationComponent implements OnInit {
   }
 
   register() {
-    this.auth.register(this.regForm).subscribe((result: any) => {
-      console.warn('result', result);
-    });
+console.log(this.regForm);
+    }
 }
-}
+
 
 
