@@ -23,25 +23,42 @@ export class RegistrationComponent implements OnInit {
 
   errors: any = [];
 
-  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router) {}
+  get regPassword() {
+    return this.regForm.get('password');
+  }
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private auth: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.regForm = this.formBuilder.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(RegExp('(?=.*[0-9])(?=.*[A-Z])')),
+        ],
+      ],
     });
   }
-  
+
   register(): void {
     this.errors = [];
-    this.auth.register(this.regForm)
-      .subscribe(() => {
-        this.router.navigate(['/auth/login'], { queryParams: { registered: 'success' } }); // jei success, nukreipia i login
-       },
-        (errorResponse) => {
-          this.errors.push(errorResponse.error.error);
-        });
-}
+    this.auth.register(this.regForm).subscribe(
+      () => {
+        this.router.navigate(['/auth/login'], {
+          queryParams: { registered: 'success' },
+        }); // jei success, nukreipia i login
+      },
+      (errorResponse) => {
+        this.errors.push(errorResponse.error.error);
+      }
+    );
+  }
 }
