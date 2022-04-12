@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
 import {
   FormBuilder,
   FormControl,
@@ -7,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-registration',
@@ -48,8 +48,8 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-  register(): void {
-    this.auth.register(this.regForm);
+  register({ data }: { data: any }) {
+    this.auth.register(data);
     console.log(this.regForm)
   }
 }
