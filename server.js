@@ -12,8 +12,8 @@ const app = express();
 app.use(express.static(buildPath));
 
 // Otherwise serve index.html
-app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname + buildPath + "/index.html"));
+app.get("*", function (req, res) {
+  res.sendFile(__dirname + buildPath + "/index.html");
 });
 
 app.listen(PORT);
