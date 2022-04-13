@@ -49,10 +49,14 @@ export class RegistrationComponent implements OnInit {
   }
 
   register({ data }: { data: any }) {
-    this.auth.register(data);
-    console.log(this.regForm)
+    this.auth.register(data).subscribe((result: any) => {
+      console.warn('result', result);
+    });
+  console.warn(data);
   }
 }
+
+
 
 
 
