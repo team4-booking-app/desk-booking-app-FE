@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-overview',
   templateUrl: './overview.component.html',
-  styleUrls: ['./overview.component.scss']
+  styleUrls: ['./overview.component.scss'],
 })
 export class OverviewComponent implements OnInit {
-
   notify!: string;
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
@@ -20,5 +20,4 @@ export class OverviewComponent implements OnInit {
       }
     });
   }
-
 }
