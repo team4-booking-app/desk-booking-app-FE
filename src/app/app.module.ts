@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import {RouterModule} from "@angular/router";
+import {OverviewComponent} from "./overview/overview.component";
 
 
 @NgModule({
@@ -24,7 +26,11 @@ import { HeaderComponent } from './header/header.component';
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    NgbModule
+    NgbModule,
+    RouterModule.forRoot([
+      {path: '', redirectTo: '/auth/login', pathMatch: 'full'},
+      {path: 'overview', component: OverviewComponent},
+      {path: '**', component: PageNotFoundComponent}])
   ],
   providers: [],
   bootstrap: [AppComponent],
