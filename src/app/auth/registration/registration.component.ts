@@ -8,7 +8,6 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -50,7 +49,8 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit({ data }: { data: any }) {
-    this.http.post(
+    this.http
+      .post(
         'https://team4-backend-stage-app.herokuapp.com/api/v1/registration',
         data
       )
@@ -60,8 +60,3 @@ export class RegistrationComponent implements OnInit {
     console.warn(data);
   }
 }
-
-
-
-
-
