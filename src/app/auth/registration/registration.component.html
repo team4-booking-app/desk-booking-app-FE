@@ -7,10 +7,11 @@
             <h2 class="text-uppercase text-center mb-3">User registration</h2>
 
             <form
-              class="reg__form"
-              *ngIf="regForm"
-              [formGroup]="regForm"
-              (ngSubmit) = "register({ data: regForm.value })"
+            #userPost="ngForm"
+            class="reg__form"
+            *ngIf="regForm"
+            [formGroup]="regForm"
+            (submit)="onSubmit({ data: userPost.value })"
             >
               <div class="mb-4">
                 <label class="form-label" for="firstName">First name</label>

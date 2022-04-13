@@ -10,16 +10,16 @@ const jwt = new JwtHelperService();
 })
 export class AuthService {
 
-  private url = 'https://team4-backend-stage-app.herokuapp.com/api/v1/registration'; 
+  // private url = 'https://team4-backend-stage-app.herokuapp.com/api/v1/registration'; 
   private decodedToken: any;
 
   constructor(private http: HttpClient) { }
 
-  public register({ data }: { data: any }) {
-    const URI = this.url;
-    return this.http.post(URI, data);
+  // public register({ data }: { data: any }) {
+  //   const URI = this.url;
+  //   return this.http.post(URI, data);
 }
-  }
+  
 
   // public login(data: any): Observable<any> {
   //   const URI = this.url + '/login';
