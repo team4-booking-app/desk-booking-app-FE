@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import {
   FormBuilder,
   FormControl,
@@ -23,8 +24,13 @@ export class LoginComponent implements OnInit {
   errors: any = [];
   notify!: string;
 
-  constructor(private auth: AuthService, private router: Router, private formBuilder: FormBuilder, private route: ActivatedRoute) {}
- 
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -33,8 +39,18 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login(): void {
+  login() {
+    this.authService.login(this.loginForm.value).subscribe((token) => {
+      this.router.navigate(['/overview'], {
+        queryParams: { loggedin: 'success' },
+      });
+    });
   }
-  
-}
 
+  // onSubmit({ data }: { data: any }) {
+  //   this.http.post('http://localhost:8080', data).subscribe((result: any) => {
+  //     console.warn('result', result);
+  //   });
+  //   console.warn(data);
+  // }
+}

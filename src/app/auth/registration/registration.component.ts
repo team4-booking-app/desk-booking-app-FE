@@ -26,12 +26,7 @@ export class RegistrationComponent implements OnInit {
   get regPassword() {
     return this.regForm.get('password');
   }
-
-  constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    private http: HttpClient
-  ) {}
+  constructor(private formBuilder: FormBuilder, private router: Router, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.regForm = this.formBuilder.group({
