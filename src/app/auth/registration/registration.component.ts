@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { HttpClient } from '@angular/common/http';
 import {
   FormBuilder,
   FormControl,
@@ -29,8 +29,8 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -48,11 +48,15 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-  register() {
-    this.auth.register(this.regForm).subscribe((result: any) => {
-      console.warn('result', result);
-    });
+  onSubmit({ data }: { data: any }) {
+    this.http
+      .post(
+        'https://team4-backend-stage-app.herokuapp.com/api/v1/registration',
+        data
+      )
+      .subscribe((result: any) => {
+        console.warn('result', result);
+      });
+    console.warn(data);
+  }
 }
-}
-
-
