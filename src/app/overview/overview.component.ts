@@ -1,24 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-overview',
   templateUrl: './overview.component.html',
-  styleUrls: ['./overview.component.scss']
+  styleUrls: ['./overview.component.scss'],
+  providers: [NgbCarouselConfig],
 })
 export class OverviewComponent implements OnInit {
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
-  notify!: string;
-
-  constructor(private router: Router, private route: ActivatedRoute) { }
-
-  ngOnInit(): void {
-    this.route.queryParams.subscribe((params) => {
-      const key1 = 'loggedin';
-      if (params[key1] === 'success') {
-        this.notify = 'You have been successfully logged in';
-      }
-    });
-  }
-
+  ngOnInit(): void {}
 }
