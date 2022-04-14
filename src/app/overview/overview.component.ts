@@ -9,8 +9,6 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
   providers: [NgbCarouselConfig],
 })
 export class OverviewComponent implements OnInit {
-  notify!: string;
-
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {}
