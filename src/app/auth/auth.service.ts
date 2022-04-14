@@ -9,10 +9,10 @@ const jwt = new JwtHelperService();
   providedIn: 'root',
 })
 export class AuthService {
-  private url = 'http://localhost:8080';
+  private url = 'http://localhost:8080/authenticate';
   private decodedToken: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, ) {}
 
   public login(userData: any): Observable<any>  {
     return this.http.post(this.url, userData).pipe(

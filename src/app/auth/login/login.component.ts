@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/overview'], {
         queryParams: { loggedin: 'success' },
       });
+      
     });
   }
 
