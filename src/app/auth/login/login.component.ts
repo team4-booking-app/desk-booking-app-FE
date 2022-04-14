@@ -48,10 +48,4 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // onSubmit({ data }: { data: any }) {
-  //   this.http.post('http://localhost:8080', data).subscribe((result: any) => {
-  //     console.warn('result', result);
-  //   });
-  //   console.warn(data);
-  // }
 }
