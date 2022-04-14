@@ -10,18 +10,24 @@
         />
       </a>
       <h1>Office Desk Booking</h1>
+
       <button
-        class="navbar-toggler collapsed"
+        class="navbar-toggler"
         type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
         aria-controls="navbarNav"
         aria-expanded="false"
         aria-label="Toggle navigation"
+        (click)="isMenuCollapsed = !isMenuCollapsed"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div
+        [ngbCollapse]="isMenuCollapsed"
+        class="collapse navbar-collapse"
+        id="navbarNav"
+      >
         <ul class="navbar-nav ms-auto">
           <li class="nav-item ms-auto">
             <a class="nav-link" routerLink="/overview" routerLinkActive="active"
