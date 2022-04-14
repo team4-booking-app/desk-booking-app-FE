@@ -1,48 +1,59 @@
-<nav class="navbar navbar-expand-lg navbar-light shadow bg-light fixed-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">
-      <img
-        src="../../../assets/Team 4.png"
-        width="60px"
-        length="60px"
-        alt="logo"
-      />
-    </a>
-    <h1>Office Desk Booking</h1>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item ms-auto">
-          <a class="nav-link" routerLink="/overview" routerLinkActive="active"
-            >Overview</a
-          >
-        </li>
-        <li class="nav-item ms-auto">
-          <a class="nav-link" routerLink="/auth/login" routerLinkActive="active"
-            >Log out</a
-          >
-        </li>
-        <li class="nav-item ms-auto">
-          <a class="nav-link" routerLink="" routerLinkActive="active"
-            >Book a desk</a
-          >
-        </li>
-        <li class="nav-item ms-auto">
-          <a class="nav-link" routerLink="" routerLinkActive="active"
-            >Cancel booking</a
-          >
-        </li>
-      </ul>
+<div class="pb-150px">
+  <nav class="navbar navbar-expand-lg navbar-light shadow bg-light fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img
+          src="../../../assets/Team 4.png"
+          width="60px"
+          length="60px"
+          alt="logo"
+        />
+      </a>
+      <h1>Office Desk Booking</h1>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        (click)="isMenuCollapsed = !isMenuCollapsed"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        [ngbCollapse]="isMenuCollapsed"
+        class="collapse navbar-collapse"
+        id="navbarNav"
+      >
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item ms-auto">
+            <a class="nav-link" routerLink="/overview" routerLinkActive="active"
+              >Overview</a
+            >
+          </li>
+          <li class="nav-item ms-auto">
+            <a class="nav-link" routerLink="" routerLinkActive="active"
+              >Book a desk</a
+            >
+          </li>
+          <li class="nav-item ms-auto">
+            <a class="nav-link" routerLink="" routerLinkActive="active"
+              >Cancel booking</a
+            >
+          </li>
+          <li class="nav-item ms-auto">
+            <a
+              class="nav-link"
+              routerLink="/auth/login"
+              routerLinkActive="active"
+              >Log out</a
+            >
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+</div>
