@@ -14,12 +14,5 @@ export class OverviewComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute) {}
 
-  ngOnInit(): void {
-    this.route.queryParams.subscribe((params) => {
-      const key1 = 'loggedin';
-      if (params[key1] === 'success') {
-        this.notify = 'You have been successfully logged in';
-      }
-    });
-  }
+  ngOnInit(): void {}
 }
