@@ -35,4 +35,10 @@ export class AuthService {
   //   localStorage.setItem('auth_meta', JSON.stringify(this.decodedToken));
   //   return token;
   // }
+
+  public logout(): void {
+    localStorage.removeItem('auth');
+
+
+  }
 }
