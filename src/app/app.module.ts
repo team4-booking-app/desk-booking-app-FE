@@ -10,6 +10,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { OverviewComponent } from './overview/overview.component';
+import { DeskBookingComponent } from './desk-booking/desk-booking.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { OverviewComponent } from './overview/overview.component';
     FooterComponent,
     HeaderComponent,
     OverviewComponent,
+    DeskBookingComponent,
   ],
   imports: [
     BrowserModule,
