@@ -9,7 +9,7 @@ const jwt = new JwtHelperService();
   providedIn: 'root',
 })
 export class AuthService {
-  private url = 'https://team4-backend-stage-app.herokuapp.com/api/v1/authenticate';
+  private url = 'https://team4-backend-stage-app.herokuapp.com/authenticate';
   //private decodedToken: any;
 
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
