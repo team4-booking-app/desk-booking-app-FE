@@ -4,13 +4,13 @@ import { OverviewComponent } from './overview/overview.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/auth/login', pathMatch: 'full'},
-  {path: 'overview', component: OverviewComponent},
-  {path: '**', component: PageNotFoundComponent}
+  { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
+  { path: 'overview', component: OverviewComponent },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
