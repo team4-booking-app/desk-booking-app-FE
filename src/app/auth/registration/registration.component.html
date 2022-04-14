@@ -11,7 +11,7 @@
               class="reg__form"
               *ngIf="regForm"
               [formGroup]="regForm"
-              (submit)="onSubmit({ data: userPost.value })"
+              (submit)="onSubmit()"
             >
               <div class="mb-4">
                 <label class="form-label" for="firstName">First name</label>

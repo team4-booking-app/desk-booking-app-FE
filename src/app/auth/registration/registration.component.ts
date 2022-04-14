@@ -26,7 +26,11 @@ export class RegistrationComponent implements OnInit {
   get regPassword() {
     return this.regForm.get('password');
   }
-  constructor(private formBuilder: FormBuilder, private router: Router, private http: HttpClient) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {
     this.regForm = this.formBuilder.group({
@@ -43,15 +47,28 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-  onSubmit({ data }: { data: any }) {
+  onSubmit() {
+    console.log(this.regForm.value);
     this.http
       .post(
         'https://team4-backend-stage-app.herokuapp.com/api/v1/registration',
-        data
+        this.regForm.value
       )
       .subscribe((result: any) => {
         console.warn('result', result);
       });
-    console.warn(data);
+    console.warn(this.regForm.value);
   }
+
+  // onSubmit({ data }: { data: any }) {
+  //   this.http
+  //     .post(
+  //       'https://team4-backend-stage-app.herokuapp.com/api/v1/registration',
+  //       data
+  //     )
+  //     .subscribe((result: any) => {
+  //       console.warn('result', result);
+  //     });
+  //   console.warn(data);
+  // }
 }
