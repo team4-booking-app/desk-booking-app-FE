@@ -13,15 +13,18 @@
 <hr />
 
 <ng-template #popTemplate>
-  <datepicker
-    [hidden]="!isDateVisible"
-    [(ngModel)]="date"
-    [minDate]="minDate"
-    [showWeeks]="true"
-    (ngModelChange)="updateDate()"
-    (selectionDone)="dateSelectionDone()"
-  >
-  </datepicker>
+  <div>
+    <input
+      type="text"
+      placeholder="Datepicker"
+      class="form-control"
+      [hidden]="!isDateVisible"
+      [(ngModel)]="date"
+      (ngModelChange)="updateDate()"
+      (selectionDone)="dateSelectionDone()"
+      bsDatepicker
+    />
+  </div>
   <timepicker
     [hidden]="isDateVisible"
     [(ngModel)]="time"

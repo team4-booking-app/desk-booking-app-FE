@@ -9,11 +9,13 @@ import { DateTime } from '../desk-booking/DateTime';
   styleUrls: ['./desk-booking.component.scss'],
 })
 export class DeskBookingComponent implements OnInit {
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private router: Router, private route: ActivatedRoute) {
+    this.date = this.time = new Date();
+  }
 
-  @ViewChild('popoverRef') private _popoverRef!: PopoverDirective; //reikia ! ar ne?
-  time!: Date;
-  date!: Date;
+  @ViewChild('popoverRef') private _popoverRef!: PopoverDirective;
+  time: Date;
+  date: Date;
   isDateVisible: boolean = true;
   isMeridian: boolean = false;
   dateTime = new Date();
