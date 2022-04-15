@@ -67,11 +67,11 @@ export class DeskBookingComponent implements OnInit {
     this.date = this.time = new Date();
     this.dateTime = DateTime.now(this.date);
   }
-  clear() {
-    //https://valor-software.com/ngx-bootstrap/#/timepicker#dynamic
-    //Check component DemoTimepickerDynamicComponent  -> clear() method;  void 0 evaluates to undefined
-    // this.time = void 0;
-    // this.date = void 0;
-    // this.dateTime = void 0;
-  }
+  // clear() {
+  //   //https://valor-software.com/ngx-bootstrap/#/timepicker#dynamic
+  //   //Check component DemoTimepickerDynamicComponent  -> clear() method;  void 0 evaluates to undefined
+  //    this.time = '';
+  //    this.date = '';
+  //    this.dateTime = '';
+  // }
 }
