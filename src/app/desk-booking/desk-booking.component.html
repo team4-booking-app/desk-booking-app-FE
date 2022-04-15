@@ -1,7 +1,78 @@
-<p>desk-booking works!</p>
-<p>desk-booking works!</p>
-<p>desk-booking works!</p>
-<p>desk-booking works!</p>
-<p>desk-booking works!</p>
-<p>desk-booking works!</p>
-<p>desk-booking works!</p>
+<alert type="success">
+  <input
+    type="text"
+    class="form-control"
+    [popover]="popTemplate"
+    placement="bottom"
+    [outsideClick]="true"
+    #popoverRef="bs-popover"
+    value="{{ dateTime }}"
+    (click)="showDate()"
+  />
+</alert>
+<hr />
+
+<ng-template #popTemplate>
+  <datepicker
+    [hidden]="!isDateVisible"
+    [(ngModel)]="date"
+    [minDate]="minDate"
+    [showWeeks]="true"
+    (ngModelChange)="updateDate()"
+    (selectionDone)="dateSelectionDone()"
+  >
+  </datepicker>
+  <timepicker
+    [hidden]="isDateVisible"
+    [(ngModel)]="time"
+    (ngModelChange)="updateTime()"
+    [showMeridian]="isMeridian"
+  >
+  </timepicker>
+
+  <div style="padding: 5px">
+    <span class="btn-group pull-left" style="margin-right: 10px">
+      <button
+        type="button"
+        class="btn btn-sm btn-info"
+        [hidden]="!isDateVisible"
+        (click)="today()"
+      >
+        Today
+      </button>
+      <button
+        type="button"
+        class="btn btn-sm btn-info"
+        [hidden]="isDateVisible"
+        (click)="now()"
+      >
+        Now
+      </button>
+      <button type="button" class="btn btn-sm btn-danger" (click)="clear()">
+        Clear
+      </button>
+    </span>
+    <span class="btn-group pull-right">
+      <button
+        type="button"
+        class="btn btn-sm btn-default"
+        [hidden]="isDateVisible"
+        (click)="showDate()"
+      >
+        Date
+      </button>
+      <button
+        type="button"
+        class="btn btn-sm btn-default"
+        [hidden]="!isDateVisible"
+        (click)="showTime()"
+      >
+        Time
+      </button>
+      <button type="button" class="btn btn-sm btn-success" (click)="close()">
+        Close
+      </button>
+    </span>
+    <span class="clearfix"></span>
+  </div>
+</ng-template>
