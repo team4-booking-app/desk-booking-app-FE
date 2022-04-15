@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   public isMenuCollapsed = true;
 
-  constructor(public authService: AuthService, private router: Router) { }
+  constructor(public authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
