@@ -3,12 +3,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {
-  AlertModule,
-  PopoverModule,
-  DatepickerModule,
-  TimepickerModule,
-} from 'ngx-bootstrap/alert';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { PopoverModule } from 'ngx-bootstrap/popover';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,7 +35,7 @@ import { DeskBookingComponent } from './desk-booking/desk-booking.component';
     NgbModule,
     AlertModule.forRoot(),
     PopoverModule.forRoot(),
-    DatepickerModule.forRoot(),
+    BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot(),
   ],
   providers: [],
