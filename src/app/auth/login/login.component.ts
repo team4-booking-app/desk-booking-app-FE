@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
@@ -24,11 +23,9 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
 
   constructor(
-    private http: HttpClient,
     private authService: AuthService,
     private router: Router,
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -39,13 +36,15 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.authService.login(this.loginForm.value).subscribe((token) => {
-      this.router.navigate(['/overview'], {
-        queryParams: { loggedin: 'success' },
-      });
+    this.authService.login(this.loginForm.value).subscribe(
+      (token) => {
+        this.router.navigate(['/overview'], {
+          queryParams: { loggedin: 'success' },
+        });
+      },
+      () => {
         this.isLoginFailed = true;
-      
-    });
+      }
+    );
   }
-
 }
