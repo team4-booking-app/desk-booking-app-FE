@@ -27,11 +27,6 @@ import {OverviewComponent} from "./overview/overview.component";
     ReactiveFormsModule,
     BrowserAnimationsModule,
     NgbModule,
-    RouterModule.forRoot([
-      {path: '', redirectTo: '/auth/login', pathMatch: 'full'},
-      {path: 'overview', component: OverviewComponent},
-      {path: '**', component: PageNotFoundComponent},
-      ], {useHash: true})
   ],
   providers: [],
   bootstrap: [AppComponent],
