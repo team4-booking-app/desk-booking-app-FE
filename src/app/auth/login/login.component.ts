@@ -21,8 +21,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl(''),
   });
 
-  errors: any = [];
-  notify!: string;
+  isLoginFailed = false;
 
   constructor(
     private http: HttpClient,
@@ -44,6 +43,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/overview'], {
         queryParams: { loggedin: 'success' },
       });
+        this.isLoginFailed = true;
       
     });
   }
