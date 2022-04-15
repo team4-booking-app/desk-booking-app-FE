@@ -20,7 +20,7 @@ const routes: Routes = [
     RegistrationComponent
   ],
   imports: [
-    RouterModule.forChild(routes),
+    RouterModule.forRoot(routes),
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
