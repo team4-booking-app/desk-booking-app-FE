@@ -68,7 +68,7 @@
         Time
       </button>
       <button type="button" class="btn btn-sm btn-danger" (click)="close()">
-        Close
+        OK
       </button>
     </span>
     <span class="clearfix"></span>
@@ -76,12 +76,16 @@
 </ng-template>
 
 <div class="pb-5">
-<button type="button" class="btn btn-info" (click)="dropdownAppear()"                   [disabled]="isDateVisible">Check availability</button>
+  <button
+    type="button"
+    class="btn btn-info"
+    (click)="dropdownAppear()"
+    [disabled]="isDateVisible"
+  >
+    Check availability
+  </button>
 </div>
 
 <div id="comp-render" *ngIf="dropdown">
-<app-dropdown></app-dropdown>
+  <app-dropdown></app-dropdown>
 </div>
-
-
-

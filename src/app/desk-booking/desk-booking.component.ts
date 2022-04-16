@@ -76,4 +76,11 @@ export class DeskBookingComponent implements OnInit {
   //    this.date = '';
   //    this.dateTime = '';
   // }
+
+  // Dropdown appears when button is pressed:
+  dropdown = false;
+  dropdownAppear() {
+    this.dropdown = true;
+
+  }
 }
