@@ -3,12 +3,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { PopoverDirective } from 'ngx-bootstrap/popover';
 import { DateTime } from '../desk-booking/DateTime';
 
+
 @Component({
   selector: 'app-desk-booking',
   templateUrl: './desk-booking.component.html',
   styleUrls: ['./desk-booking.component.scss'],
 })
 export class DeskBookingComponent implements OnInit {
+  
   constructor(private router: Router, private route: ActivatedRoute) {
     this.date = this.time = new Date();
   }
@@ -74,4 +76,14 @@ export class DeskBookingComponent implements OnInit {
     // this.date = void 0;
     // this.dateTime = void 0;
   }
+
+// Dropdown appears when button is pressed:
+  dropdown = false;
+
+  dropdownAppear() {
+    this.dropdown = true;
+
+  }
+
+
 }
