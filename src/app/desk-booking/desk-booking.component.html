@@ -7,7 +7,7 @@
     [outsideClick]="true"
     #popoverRef="bs-popover"
     value="{{ dateTime }}"
-    (click)="showDate()"
+    (click)="showDate(); dropdown = false"
   />
 </alert>
 <hr />
@@ -68,9 +68,24 @@
         Time
       </button>
       <button type="button" class="btn btn-sm btn-danger" (click)="close()">
-        Close
+        OK
       </button>
     </span>
     <span class="clearfix"></span>
   </div>
 </ng-template>
+
+<div class="pb-5">
+  <button
+    type="button"
+    class="btn btn-info"
+    (click)="dropdownAppear()"
+    [disabled]="isDateVisible"
+  >
+    Check availability
+  </button>
+</div>
+
+<div id="comp-render" *ngIf="dropdown">
+  <app-dropdown></app-dropdown>
+</div>
