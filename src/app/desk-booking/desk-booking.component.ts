@@ -3,14 +3,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { PopoverDirective } from 'ngx-bootstrap/popover';
 import { DateTime } from '../desk-booking/DateTime';
 
-
 @Component({
   selector: 'app-desk-booking',
   templateUrl: './desk-booking.component.html',
   styleUrls: ['./desk-booking.component.scss'],
 })
 export class DeskBookingComponent implements OnInit {
-  
   constructor(private router: Router, private route: ActivatedRoute) {
     this.date = this.time = new Date();
   }
@@ -25,6 +23,7 @@ export class DeskBookingComponent implements OnInit {
   ngOnInit() {
     if (this.dateTime) {
       this.time = this.date = this.dateTime;
+      this.time.setMinutes(0, 0);
       return;
     }
     this.date = this.time = new Date();
@@ -45,6 +44,7 @@ export class DeskBookingComponent implements OnInit {
   updateTime() {
     if (this.time) {
       this.dateTime = DateTime.getDateTime(this.date, this.time);
+      this.dateTime = DateTime.setTimeToZero(this.time);
     }
   }
 
@@ -62,25 +62,19 @@ export class DeskBookingComponent implements OnInit {
 
   now() {
     this.dateTime = DateTime.now(this.date);
+
     this.time = this.dateTime;
   }
 
   today() {
     this.date = this.time = new Date();
+
     this.dateTime = DateTime.now(this.date);
   }
-  // clear() {
-  //   //https://valor-software.com/ngx-bootstrap/#/timepicker#dynamic
-  //   //Check component DemoTimepickerDynamicComponent  -> clear() method;  void 0 evaluates to undefined
-  //    this.time = '';
-  //    this.date = '';
-  //    this.dateTime = '';
-  // }
 
   // Dropdown appears when button is pressed:
   dropdown = false;
   dropdownAppear() {
     this.dropdown = true;
-
   }
 }
