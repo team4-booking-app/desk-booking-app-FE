@@ -52,6 +52,7 @@ export class RegistrationComponent implements OnInit {
       .post(
         'https://team4-backend-stage-app.herokuapp.com/api/v1/registration',
         this.regForm.value
-      );
+      )
+      .subscribe();
   }
 }
