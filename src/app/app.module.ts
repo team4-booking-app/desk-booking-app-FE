@@ -15,7 +15,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { OverviewComponent } from './overview/overview.component';
 import { DeskBookingComponent } from './desk-booking/desk-booking.component';
-import { DropdownComponent } from './desk-booking/room-dropdown/room-dropdown.component';
+import { RoomDropdownComponent } from './desk-booking/room-dropdown/room-dropdown.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { DropdownComponent } from './desk-booking/room-dropdown/room-dropdown.co
     HeaderComponent,
     OverviewComponent,
     DeskBookingComponent,
-    DropdownComponent,
+    RoomDropdownComponent,
   ],
   imports: [
     BrowserModule,

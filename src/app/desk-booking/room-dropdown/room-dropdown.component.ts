@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-dropdown',
-  templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.scss'],
+  templateUrl: './room-dropdown.component.html',
+  styleUrls: ['./room-dropdown.component.scss'],
 })
-export class DropdownComponent implements OnInit {
+export class RoomDropdownComponent implements OnInit {
   selectedRoom: string = '';
 
   constructor() {}
