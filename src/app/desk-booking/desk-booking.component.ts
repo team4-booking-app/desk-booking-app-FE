@@ -10,7 +10,7 @@ import { DateTime } from '../desk-booking/DateTime';
   styleUrls: ['./desk-booking.component.scss'],
 })
 export class DeskBookingComponent implements OnInit {
-  
+
   constructor(private router: Router, private route: ActivatedRoute) {
     this.date = this.time = new Date();
   }
@@ -81,6 +81,5 @@ export class DeskBookingComponent implements OnInit {
   dropdown = false;
   dropdownAppear() {
     this.dropdown = true;
-
   }
 }
