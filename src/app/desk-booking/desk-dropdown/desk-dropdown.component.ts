@@ -1,24 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-interface Desks {
-  deskId: number;
-  deskName: string;
-  roomId: number;
-}
+import { BookingService, Desks } from '../booking.service';
+import { Observable, of } from 'rxjs';
+import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.component';
+import { RoomDropdownComponent } from '../room-dropdown/room-dropdown.component';
+
 @Component({
   selector: 'app-desk-dropdown',
   templateUrl: './desk-dropdown.component.html',
   styleUrls: ['./desk-dropdown.component.scss'],
 })
 export class DeskDropdownComponent implements OnInit {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private bookingService: BookingService,
+    private dateTimePicker: DateTimePickerComponent,
+    private roomPicker: RoomDropdownComponent
+  ) {}
 
-  ngOnInit(): void {}
+  Desks$: Observable<Desks[]> = of();
 
-  desksURL = 'https://team4-backend-stage-app.herokuapp.com/api/v1/available';
-  getDesks() {
-    return this.http.get<Desks>(this.desksURL);
+  ngOnInit(): void {
+    this.Desks$ = this.bookingService.loadDesks(
+      this.dateTimePicker.getReservationDate()
+    );
   }
-
-  roomSelect() {}
 }

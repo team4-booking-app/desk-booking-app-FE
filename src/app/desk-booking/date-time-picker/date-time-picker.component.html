@@ -77,7 +77,7 @@
     </div>
   </ng-template>
 </form> -->
-<form [formGroup]="dateTimeForm" (ngSubmit)="getStartDate()">
+<form [formGroup]="dateTimeForm" (ngSubmit)="getReservationDate()">
   <label for="meeting-time">Choose a time for your appointment:</label><br />
   <div class="d-flex justify-content-center">
     <input
@@ -85,12 +85,14 @@
       id="meeting-time"
       name="meeting-time"
       formControlName="startDate"
+      min="2022-04-21T09:00"
     />
     <input
       type="datetime-local"
       id="meeting-time"
       name="meeting-time"
       formControlName="endDate"
+      min="2022-04-21T17:00"
     />
   </div>
   <button type="submit" class="btn btn-sm btn-danger">OK</button>

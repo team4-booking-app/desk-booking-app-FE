@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-interface Desks {
+
+export interface Desks {
   deskId: number;
   deskName: string;
   roomId: number;
@@ -8,11 +9,18 @@ interface Desks {
 @Injectable({
   providedIn: 'root',
 })
-export class BookingServiceService {
+export class BookingService {
   constructor(private http: HttpClient) {}
+
   private desksURL =
     'https://team4-backend-stage-app.herokuapp.com/api/v1/available';
-  getDesks() {
-    return this.http.get<Desks>(this.desksURL);
+
+  loadDesks(reservationDate: any) {
+    //kaip referencint i ta forma
+    return (
+      this.http.get<Desks[]>(this.desksURL) +
+      reservationDate.startDate +
+      reservationDate.endDate
+    );
   }
 }

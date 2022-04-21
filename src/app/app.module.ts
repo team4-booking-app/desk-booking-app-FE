@@ -15,9 +15,10 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { OverviewComponent } from './overview/overview.component';
 import { DeskBookingComponent } from './desk-booking/desk-booking.component';
-import { DropdownComponent } from './desk-booking/dropdown/dropdown.component';
 import { DeskDropdownComponent } from './desk-booking/desk-dropdown/desk-dropdown.component';
 import { DateTimePickerComponent } from './desk-booking/date-time-picker/date-time-picker.component';
+import { RoomDropdownComponent } from './desk-booking/room-dropdown/room-dropdown.component';
+import { BookingFormComponent } from './desk-booking/booking-form/booking-form.component';
 
 @NgModule({
   declarations: [
@@ -27,9 +28,10 @@ import { DateTimePickerComponent } from './desk-booking/date-time-picker/date-ti
     HeaderComponent,
     OverviewComponent,
     DeskBookingComponent,
-    DropdownComponent,
     DeskDropdownComponent,
     DateTimePickerComponent,
+    RoomDropdownComponent,
+    BookingFormComponent,
   ],
   imports: [
     BrowserModule,

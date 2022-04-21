@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PopoverDirective } from 'ngx-bootstrap/popover';
 import { DateTime } from '../desk-booking/DateTime';
+import { BookingService } from './booking.service';
 
 @Component({
   selector: 'app-desk-booking',
@@ -9,7 +10,11 @@ import { DateTime } from '../desk-booking/DateTime';
   styleUrls: ['./desk-booking.component.scss'],
 })
 export class DeskBookingComponent implements OnInit {
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private bookingService: BookingService
+  ) {
     this.date = this.time = new Date();
   }
 
