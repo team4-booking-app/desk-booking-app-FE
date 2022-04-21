@@ -10,7 +10,7 @@ import { DateTime } from '../desk-booking/DateTime';
   styleUrls: ['./desk-booking.component.scss'],
 })
 export class DeskBookingComponent implements OnInit {
-  
+
   constructor(private router: Router, private route: ActivatedRoute) {
     this.date = this.time = new Date();
   }
@@ -69,18 +69,9 @@ export class DeskBookingComponent implements OnInit {
     this.date = this.time = new Date();
     this.dateTime = DateTime.now(this.date);
   }
-  // clear() {
-  //   //https://valor-software.com/ngx-bootstrap/#/timepicker#dynamic
-  //   //Check component DemoTimepickerDynamicComponent  -> clear() method;  void 0 evaluates to undefined
-  //    this.time = '';
-  //    this.date = '';
-  //    this.dateTime = '';
-  // }
 
-  // Dropdown appears when button is pressed:
   dropdown = false;
   dropdownAppear() {
     this.dropdown = true;
-
   }
 }
