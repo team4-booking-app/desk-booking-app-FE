@@ -17,6 +17,7 @@ import { OverviewComponent } from './overview/overview.component';
 import { DeskBookingComponent } from './desk-booking/desk-booking.component';
 import { DropdownComponent } from './desk-booking/dropdown/dropdown.component';
 import { DeskDropdownComponent } from './desk-booking/desk-dropdown/desk-dropdown.component';
+import { DateTimePickerComponent } from './desk-booking/date-time-picker/date-time-picker.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { DeskDropdownComponent } from './desk-booking/desk-dropdown/desk-dropdow
     DeskBookingComponent,
     DropdownComponent,
     DeskDropdownComponent,
+    DateTimePickerComponent,
   ],
   imports: [
     BrowserModule,

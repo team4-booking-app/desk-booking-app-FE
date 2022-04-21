@@ -1,0 +1,97 @@
+<!-- <form [formGroup]="dateTimeForm" (ngSubmit)="(getStartDate)">
+  <alert type="success">
+    <input
+      type="text"
+      class="form-control"
+      [popover]="popTemplate"
+      placement="bottom"
+      [outsideClick]="true"
+      #popoverRef="bs-popover"
+      value="{{ dateTime }}"
+      (click)="showDate(); dropdown = false"
+    />
+  </alert>
+  <hr />
+  <ng-template #popTemplate>
+    <div>
+      <input
+        id="startDate"
+        type="text"
+        placeholder="Pick a date"
+        class="form-control"
+        [(ngModel)]="date"
+        [hidden]="!isDateVisible"
+        (ngModelChange)="updateDate()"
+        (selectionDone)="dateSelectionDone()"
+        bsDatepicker
+        [bsConfig]="{ isAnimated: true }"
+      />
+    </div>
+    <timepicker
+      [hidden]="isDateVisible"
+      [(ngModel)]="time"
+      (ngModelChange)="updateTime()"
+      [showMeridian]="isMeridian"
+      [showMinutes]="false"
+    >
+    </timepicker>
+    <div style="padding: 5px">
+      <button
+        type="button"
+        class="btn btn-warning btn-sm btn-info"
+        [hidden]="!isDateVisible"
+        (click)="today()"
+      >
+        Today
+      </button>
+      <button
+        type="button"
+        class="btn btn-warning btn-sm btn-info"
+        [hidden]="isDateVisible"
+        (click)="now()"
+      >
+        Now
+      </button>
+      <span class="btn-group pull-right">
+        <button
+          type="button"
+          class="btn btn-sm btn-info"
+          [hidden]="isDateVisible"
+          (click)="showDate()"
+        >
+          Date
+        </button>
+        <button
+          type="button"
+          class="btn btn-sm btn-info"
+          [hidden]="!isDateVisible"
+          (click)="showTime()"
+        >
+          Time
+        </button>
+        <button type="submit" class="btn btn-sm btn-danger" (click)="close()">
+          OK
+        </button>
+      </span>
+      <span class="clearfix"></span>
+    </div>
+  </ng-template>
+</form> -->
+<form [formGroup]="dateTimeForm" (ngSubmit)="getStartDate()">
+  <label for="meeting-time">Choose a time for your appointment:</label><br />
+  <div class="d-flex justify-content-center">
+    <input
+      type="datetime-local"
+      id="meeting-time"
+      name="meeting-time"
+      formControlName="startDate"
+    />
+    <input
+      type="datetime-local"
+      id="meeting-time"
+      name="meeting-time"
+      formControlName="endDate"
+    />
+  </div>
+  <button type="submit" class="btn btn-sm btn-danger">OK</button>
+</form>
