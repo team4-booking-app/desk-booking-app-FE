@@ -17,6 +17,10 @@ export class AuthService {
     this._isLoggedIn$.next(!!token);
   }
 
+  public isLoggedIn(): boolean{
+    return this._isLoggedIn$.value;
+  }
+
   login(userData: any): Observable<any> {
     return this.http.post(this.url, userData).pipe(
       tap((response: any) => {
@@ -27,9 +31,11 @@ export class AuthService {
   }
 
   public logout(): void {
-    localStorage.removeItem('auth');
     this.router.navigate(['/auth/login'], {
-      queryParams: { loggedOut: 'success' },
+      queryParams: {loggedOut: 'success'},
+    }).then(r =>{
+      this._isLoggedIn$.next(false);
+      localStorage.removeItem('auth');
     });
   }
 }

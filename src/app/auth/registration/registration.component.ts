@@ -48,15 +48,11 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.regForm.value);
     this.http
       .post(
         'https://team4-backend-stage-app.herokuapp.com/api/v1/registration',
         this.regForm.value
       )
-      .subscribe((result: any) => {
-        console.warn('result', result);
-      });
-    console.warn(this.regForm.value);
+      .subscribe();
   }
 }
