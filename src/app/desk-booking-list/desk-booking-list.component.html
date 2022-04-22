@@ -1,0 +1,27 @@
+<h3 class="mt-5">Reservations</h3>
+
+<div class="row mt-5 text-center">
+  <div class="col" *ngFor="let reservation of reservationsList$ | async">
+    <div class="card text-white bg-custom mb-3 w-100">
+      <div class="card-header"><h5>Reservation</h5></div>
+      <div class="card-body">
+        <h5 class="card-title">User</h5>
+        <p><br>{{ reservation.userEmail }}</p>
+        <hr>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Room name</h5>
+        <p class="card-title fw-bold">{{ reservation.roomId }}</p>
+        <hr>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title fw-bold">Time</h5>
+        <p class="card-title fw-bold">{{ reservation.reservationStart.substring(0,10) }}</p>
+        <p class="card-title fw-bold"> {{ reservation.reservationStart.substring(11,16) }} - {{ reservation.reservationEnd.substring(11,16) }}</p>
+      </div>
+      <div class="card-body">
+        <button type="button" class="btn btn-sm btn-danger" style="width: 15rem; height: 3rem;" id="{{reservation.reservationId}}">Cancel reservation</button>
+      </div>
+    </div>
+  </div>
+</div>
