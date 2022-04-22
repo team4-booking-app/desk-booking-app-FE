@@ -21,8 +21,6 @@ export class RegistrationComponent implements OnInit {
     password: new FormControl(''),
   });
 
-  errors: any = [];
-
   get regPassword() {
     return this.regForm.get('password');
   }
@@ -53,6 +51,10 @@ export class RegistrationComponent implements OnInit {
         'https://team4-backend-stage-app.herokuapp.com/api/v1/registration',
         this.regForm.value
       )
-      .subscribe();
+      .subscribe(() => {
+        this.router.navigate(['/auth/login'], {
+          queryParams: { registered: 'success' },
+        });
+      });
   }
 }
