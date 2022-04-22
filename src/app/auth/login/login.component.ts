@@ -6,7 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -21,10 +21,12 @@ export class LoginComponent implements OnInit {
   });
 
   isLoginFailed = false;
+  infoMessage = '';
 
   constructor(
     private authService: AuthService,
     private router: Router,
+    private activatedRouter: ActivatedRoute,
     private formBuilder: FormBuilder
   ) {}
 
@@ -32,6 +34,12 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
+    });
+
+    this.activatedRouter.queryParams.subscribe((params) => {
+      if (params['registered'] === 'success') {
+        this.infoMessage = 'Registration Successful! Please Login!';
+      }
     });
   }
 

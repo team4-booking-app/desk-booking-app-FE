@@ -21,8 +21,6 @@ export class RegistrationComponent implements OnInit {
     password: new FormControl(''),
   });
 
-  isRegistrationFailed = true;
-
   get regPassword() {
     return this.regForm.get('password');
   }
@@ -54,14 +52,9 @@ export class RegistrationComponent implements OnInit {
         this.regForm.value
       )
       .subscribe(() => {
-        setTimeout(
-          () =>
-            this.router.navigate(['/auth/login'], {
-              queryParams: { registered: 'success' },
-            }),
-          3000
-        );
-        this.isRegistrationFailed = false;
+        this.router.navigate(['/auth/login'], {
+          queryParams: { registered: 'success' },
+        });
       });
   }
 }
