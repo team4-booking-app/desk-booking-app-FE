@@ -4,23 +4,36 @@
   <div class="col" *ngFor="let reservation of reservationsList$ | async">
     <div class="card text-white bg-custom mb-3 w-100">
       <div class="card-header"><h5>Reservation</h5></div>
-      <div class="card-body">
-        <h5 class="card-title">User</h5>
-        <p><br>{{ reservation.userEmail }}</p>
+      <div class="flex-child">
+        <p class="fw-bold card-detail"
+           style="font-size: 18px; margin-left: auto; margin-right: auto; margin-top: 5%; width: fit-content;
+           padding-left: 10%; padding-right: 10%;">{{ reservation.userEmail }}</p>
         <hr>
       </div>
-      <div class="card-body">
-        <h5 class="card-title">Room name</h5>
-        <p class="card-title fw-bold">{{ reservation.roomId }}</p>
-        <hr>
+      <div class="grid-container align-items-center">
+        <div class="flex-child h-fit left margin-left-5">
+          <h5 class="card-title fw-bold" style="font-size: 25px">Room name</h5>
+        </div>
+        <div class="flex-child center-content margin-right-5">
+          <p class="fw-bold card-detail w-fit"
+             style="font-size: 14px; margin-top: 17px;"> Room {{ reservation.roomId }}</p>
+        </div>
+      </div>
+      <div class="grid-container align-items-center">
+        <div class="flex-child h-fit left margin-left-5">
+          <h5 class="card-title fw-bold" style="font-size: 25px">Time</h5>
+        </div>
+        <div class="flex-child center-content margin-right-5">
+          <p class="fw-bold card-detail w-fit"
+             style="font-size: 14px; margin-top: 17px;"> {{ reservation.reservationStart.substring(0, 10) }}
+            <br> {{ reservation.reservationStart.substring(11, 16) }}
+            - {{ reservation.reservationEnd.substring(11, 16) }}</p>
+        </div>
       </div>
       <div class="card-body">
-        <h5 class="card-title fw-bold">Time</h5>
-        <p class="card-title fw-bold">{{ reservation.reservationStart.substring(0,10) }}</p>
-        <p class="card-title fw-bold"> {{ reservation.reservationStart.substring(11,16) }} - {{ reservation.reservationEnd.substring(11,16) }}</p>
-      </div>
-      <div class="card-body">
-        <button type="button" class="btn btn-sm btn-danger" style="width: 15rem; height: 3rem;" id="{{reservation.reservationId}}">Cancel reservation</button>
+        <button type="button" class="btn btn-sm btn-danger" style="width: 15rem; height: 3rem; font-size: 16px"
+                id="{{reservation.reservationId}}">Cancel reservation
+        </button>
       </div>
     </div>
   </div>
