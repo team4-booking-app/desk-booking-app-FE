@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/overview', pathMatch: 'full' },
   { path: 'overview', component: OverviewComponent, canActivate:[AuthGuard] },
   { path: 'booking', component: DeskBookingComponent, canActivate:[AuthGuard] },
-  { path: 'cancellation', component: DeskBookingListComponent, canActivate:[AuthGuard] },
+  { path: 'cancellation' , component: DeskBookingListComponent, canActivate:[AuthGuard] },
   { path: '**', component: PageNotFoundComponent },
 ];
 

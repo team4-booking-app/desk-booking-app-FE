@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Observable, of, tap} from "rxjs";
 import {Reservation} from "../shared/reservation";
 import {ReservationsService} from "../services/reservations.service";
-import {JwtHelperService} from "@auth0/angular-jwt";
 
 @Component({
   selector: 'app-desk-booking-list',

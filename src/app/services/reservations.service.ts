@@ -14,6 +14,7 @@ export class ReservationsService {
   private reservationsUrl = new URL('https://team4-backend-stage-app.herokuapp.com/api/v1/reservations');
 
   loadReservations(): Observable<Reservation[]> {
+    this.reservationsUrl.searchParams.delete('userEmail');
     this.reservationsUrl.searchParams.append('userEmail',this.helper.decodeToken(this.rawToken!).sub);
     return this.httpClient.get<Reservation[]>(this.reservationsUrl.href);
   }
