@@ -16,11 +16,10 @@ export interface Desks {
   styleUrls: ['./desk-dropdown.component.scss'],
 })
 export class DeskDropdownComponent implements OnInit {
-  constructor(
-    private bookingService: BookingService,
-    private dateTimePicker: DateTimePickerComponent,
-    private roomPicker: RoomDropdownComponent
-  ) {
+  constructor() // private bookingService: BookingService,
+  // private dateTimePicker: DateTimePickerComponent,
+  // private roomPicker: RoomDropdownComponent
+  {
     this.SelectedRoom$ = 0;
     this.SelectedDesks = [];
   }

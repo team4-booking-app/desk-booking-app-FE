@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { BookingService, Desks } from '../booking.service';
 
@@ -15,11 +14,7 @@ export class DateTimePickerComponent implements OnInit {
     endDate: new FormControl('2022-04-21T17:00:00'),
   });
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private bookingService: BookingService
-  ) {}
+  constructor(private bookingService: BookingService) {}
 
   Desks$: Observable<Desks[]> = of();
   ngOnInit() {}
@@ -31,7 +26,6 @@ export class DateTimePickerComponent implements OnInit {
       'T',
       ' '
     );
-    console.log(this.dateTimeForm.value);
     this.Desks$ = this.bookingService.loadDesks(this.dateTimeForm.value);
     this.Desks$.subscribe((T) => console.log(T));
   }
