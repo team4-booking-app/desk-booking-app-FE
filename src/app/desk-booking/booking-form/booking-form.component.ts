@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -9,7 +10,7 @@ import { FormGroup } from '@angular/forms';
 export class BookingFormComponent implements OnInit {
   bookingForm: FormGroup = new FormGroup({});
 
-  constructor() {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {}
 }
