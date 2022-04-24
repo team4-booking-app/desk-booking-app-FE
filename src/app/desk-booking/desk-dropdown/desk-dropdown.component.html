@@ -1,1 +1,4 @@
-<p>cia yra desk dropdownas</p>
+<select (change)="selectDeskChangeHandler($event)">
+  <option disabled selected value>-- select a desk --</option>
+  <option>{{ data }}</option>
+</select>

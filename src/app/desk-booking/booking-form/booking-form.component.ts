@@ -1,6 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup } from '@angular/forms';
+
+export interface Desks {
+  deskId: number;
+  deskName: string;
+  roomId: number;
+}
 
 @Component({
   selector: 'app-booking-form',
@@ -9,14 +15,16 @@ import { FormGroup } from '@angular/forms';
 })
 export class BookingFormComponent implements OnInit {
   bookingForm: FormGroup = new FormGroup({});
-
+  isShown: boolean = false;
+  parentData: any;
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {}
 
-  isShown: boolean = false;
-
   toggleShow() {
+    this.isShown = false;
     this.isShown = !this.isShown;
   }
+
+  createBooking() {}
 }
