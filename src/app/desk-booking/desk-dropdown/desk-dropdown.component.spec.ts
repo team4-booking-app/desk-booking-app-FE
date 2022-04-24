@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DeskDropdownComponent } from './desk-dropdown.component';
 
 describe('DeskDropdownComponent', () => {
@@ -8,9 +7,8 @@ describe('DeskDropdownComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeskDropdownComponent ]
-    })
-    .compileComponents();
+      declarations: [DeskDropdownComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -14,7 +14,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { OverviewComponent } from './overview/overview.component';
-import { DeskBookingComponent } from './desk-booking/desk-booking.component';
 import { DeskDropdownComponent } from './desk-booking/desk-dropdown/desk-dropdown.component';
 import { DateTimePickerComponent } from './desk-booking/date-time-picker/date-time-picker.component';
 import { RoomDropdownComponent } from './desk-booking/room-dropdown/room-dropdown.component';
@@ -27,9 +26,8 @@ import { BookingFormComponent } from './desk-booking/booking-form/booking-form.c
     FooterComponent,
     HeaderComponent,
     OverviewComponent,
-    DeskBookingComponent,
-    DeskDropdownComponent,
     DateTimePickerComponent,
+    DeskDropdownComponent,
     RoomDropdownComponent,
     BookingFormComponent,
   ],
