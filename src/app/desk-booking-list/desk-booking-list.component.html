@@ -1,7 +1,7 @@
 <h3>Reservations</h3>
 
 <div class="row mt-5 text-center">
-  <div class="col" *ngFor="let reservation of reservationsList$ | async">
+  <div class="col max-w" *ngFor="let reservation of reservationsList$ | async">
     <div class="card text-white bg-custom mb-3 w-100">
       <div class="card-header"><h5>Reservation</h5></div>
       <div class="flex-child">
@@ -12,7 +12,7 @@
       </div>
       <div class="grid-container align-items-center">
         <div class="flex-child h-fit left margin-left-5">
-          <h5 class="card-title fw-bold" style="font-size: 25px">Room name</h5>
+          <h5 class="card-title fw-bold" style="font-size: 25px">Room</h5>
         </div>
         <div class="flex-child center-content margin-right-5">
           <p class="fw-bold card-detail w-fit"
