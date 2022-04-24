@@ -74,4 +74,9 @@ export class DeskBookingComponent implements OnInit {
   dropdownAppear() {
     this.dropdown = true;
   }
+
+  dialogBox = false;
+  dialogBoxAppear() {
+    this.dialogBox = true;
+  }
 }

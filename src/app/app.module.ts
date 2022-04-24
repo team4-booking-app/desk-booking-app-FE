@@ -16,6 +16,9 @@ import { HeaderComponent } from './header/header.component';
 import { OverviewComponent } from './overview/overview.component';
 import { DeskBookingComponent } from './desk-booking/desk-booking.component';
 import { RoomDropdownComponent } from './desk-booking/room-dropdown/room-dropdown.component';
+import { ConfirmationDialogBoxComponent } from './desk-booking/confirmation-dialog-box/confirmation-dialog-box.component';
+import { ConfirmationPageComponent } from './desk-booking/confirmation-page/confirmation-page.component';
+import { CountdownModule } from "ngx-countdown";
 
 @NgModule({
   declarations: [
@@ -26,6 +29,8 @@ import { RoomDropdownComponent } from './desk-booking/room-dropdown/room-dropdow
     OverviewComponent,
     DeskBookingComponent,
     RoomDropdownComponent,
+    ConfirmationDialogBoxComponent,
+    ConfirmationPageComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +44,7 @@ import { RoomDropdownComponent } from './desk-booking/room-dropdown/room-dropdow
     PopoverModule.forRoot(),
     BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot(),
+    CountdownModule           
   ],
   providers: [],
   bootstrap: [AppComponent],

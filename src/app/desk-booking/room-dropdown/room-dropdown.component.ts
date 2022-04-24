@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./room-dropdown.component.scss'],
 })
 export class RoomDropdownComponent implements OnInit {
-  selectedRoom: string = '';
+  selectedRoom!: number;
 
   constructor() {}
 
@@ -14,5 +14,6 @@ export class RoomDropdownComponent implements OnInit {
 
   selectRoomChangeHandler(event: any) {
     this.selectedRoom = event.target.value;
+    console.log(this.selectedRoom);
   }
 }

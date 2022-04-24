@@ -1,3 +1,4 @@
+import { ConfirmationPageComponent } from './desk-booking/confirmation-page/confirmation-page.component';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {OverviewComponent} from './overview/overview.component';
@@ -9,6 +10,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/overview', pathMatch: 'full' },
   { path: 'overview', component: OverviewComponent, canActivate:[AuthGuard] },
   { path: 'booking', component: DeskBookingComponent, canActivate:[AuthGuard] },
+  { path: 'confirmation', component: ConfirmationPageComponent, canActivate:[AuthGuard] },
   { path: '**', component: PageNotFoundComponent },
 ];
 

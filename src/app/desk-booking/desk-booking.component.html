@@ -7,7 +7,7 @@
     [outsideClick]="true"
     #popoverRef="bs-popover"
     value="{{ dateTime }}"
-    (click)="showDate(); dropdown = false"
+    (click)="showDate(); dropdown = false; dialogBox = false"
   />
 </alert>
 <hr />
@@ -79,7 +79,7 @@
   <button
     type="button"
     class="btn btn-info"
-    (click)="dropdownAppear()"
+    (click)="dropdownAppear(); dialogBoxAppear()"
     [disabled]="isDateVisible"
   >
     Check availability
@@ -89,3 +89,13 @@
 <div id="comp-render" *ngIf="dropdown">
   <app-dropdown></app-dropdown>
 </div>
+
+
+
+
+
+<div>
+  <app-confirmation-dialog-box></app-confirmation-dialog-box>
+</div>
+
+

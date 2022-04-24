@@ -1,0 +1,31 @@
+<button class="btn btn-lg btn-outline-primary" (click)="openModal(mymodal)">
+  Open My Modal
+</button>
+
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Booking Confirmation</h4>
+  </div>
+  <div class="modal-body">Do you want to confirm your desk reservation?</div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+
+      (click)="createBooking(); modal.close('Save click')"
+      [routerLink]="['/confirmation']"
+    >
+      Confirm
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modal.close('Save click')"
+      [routerLink]="['/overview']"
+    >
+      Cancel
+    </button>
+  </div>
+</ng-template>
+
+<router-outlet></router-outlet>
