@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { BookingService, Desks } from '../booking.service';

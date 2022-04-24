@@ -13,4 +13,10 @@ export class BookingFormComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {}
+
+  isShown: boolean = false;
+
+  toggleShow() {
+    this.isShown = !this.isShown;
+  }
 }

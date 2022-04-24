@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { BookingService } from '../booking.service';
 import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.component';
@@ -16,8 +16,7 @@ export interface Desks {
   styleUrls: ['./desk-dropdown.component.scss'],
 })
 export class DeskDropdownComponent implements OnInit {
-  constructor() // private bookingService: BookingService,
-  // private dateTimePicker: DateTimePickerComponent,
+  constructor() // private dateTimePicker: DateTimePickerComponent, // private bookingService: BookingService,
   // private roomPicker: RoomDropdownComponent
   {
     this.SelectedRoom$ = 0;

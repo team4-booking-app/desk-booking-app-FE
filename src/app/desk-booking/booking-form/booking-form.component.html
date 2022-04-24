@@ -1,6 +1,9 @@
-<p>WORKING</p>
-<app-time-picker></app-time-picker><br />
-<app-dropdown></app-dropdown><br />
-<ng-container>
-  <app-desk-dropdown></app-desk-dropdown>
-</ng-container>
+<form [formGroup]="bookingForm">
+  <p>WORKING</p>
+  <app-time-picker></app-time-picker><br />
+  <app-dropdown (change)="toggleShow()"></app-dropdown><br />
+  <ng-container *ngIf="isShown">
+    <app-desk-dropdown></app-desk-dropdown>
+  </ng-container>
+  <button type="Book" class="btn btn-sm btn-success">Confirm booking</button>
+</form>
