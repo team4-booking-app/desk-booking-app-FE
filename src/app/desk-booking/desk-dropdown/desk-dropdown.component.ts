@@ -24,7 +24,6 @@ export interface Desks {
 export class DeskDropdownComponent implements OnInit, OnChanges {
   filteredDesks: any;
   selectedDesk: number;
-  closeResult: string = '';
 
   @Input() desks: any[];
   @Input() roomOpt: any;
@@ -41,7 +40,6 @@ export class DeskDropdownComponent implements OnInit, OnChanges {
     this.filteredDesks = this.desks.filter(
       (desk) => desk.roomId == this.roomOpt
     );
-    console.log(this.filteredDesks);
   }
 
   selectDeskChangeHandler(event: any) {

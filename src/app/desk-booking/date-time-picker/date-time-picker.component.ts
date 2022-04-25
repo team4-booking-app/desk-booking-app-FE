@@ -45,12 +45,12 @@ export class DateTimePickerComponent implements OnInit {
     this.Desks$.subscribe((deskList) => {
       this.redirectDesks.emit(deskList);
     });
+    
   }
 
   getReservationDate() {
     return this.dateTimeForm.value;
   }
 
-  roomDropdown = false;
 
 }

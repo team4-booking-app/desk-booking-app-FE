@@ -19,6 +19,7 @@ export class RoomDropdownComponent implements OnInit {
   selectRoomChangeHandler(event: any) {
     this.selectedRoom = event.target.value;
     this.redirectRoom.emit(this.selectedRoom);
+    console.log(this.selectedRoom)
   }
 
   getSelectedRoom() {
@@ -26,12 +27,7 @@ export class RoomDropdownComponent implements OnInit {
   }
 
 
-
-
-
-
-
-
+  
 
   
 
