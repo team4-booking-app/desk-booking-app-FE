@@ -1,5 +1,5 @@
 <form [formGroup]="dateTimeForm" (ngSubmit)="selectReservationDate()">
-  <label for="meeting-time">Select date and time for your reservation:</label
+  <label for="meeting-time">Select date and time for desk reservation:</label
   ><br />
   <div>
     <input
@@ -25,5 +25,8 @@
     />
   </div>
   <br />
-  <button type="submit" class="btn btn-sm btn-danger"    click="roomDropdownAppear()">Confirm date</button>
+  <button type="submit" class="btn btn-sm btn-danger"  (click)="roomDropdown=true">Confirm date</button>
 </form>
+<div *ngIf="roomDropdown">
+<app-room-dropdown></app-room-dropdown>
+</div>

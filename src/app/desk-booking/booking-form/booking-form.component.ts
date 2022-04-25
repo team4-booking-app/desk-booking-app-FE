@@ -19,7 +19,6 @@ export class BookingFormComponent implements OnInit {
   isShown: boolean = false;
   deskData: any;
   roomData: any;
-  roomDropdown: boolean = true;
   constructor(private router: Router, private route: ActivatedRoute, private bookingService: BookingService) {}
 
   ngOnInit(): void {}
@@ -28,14 +27,18 @@ export class BookingFormComponent implements OnInit {
     this.isShown = false;
     this.isShown = !this.isShown;
   }
+  
 
+  roomDropdown = false;
 
   createBooking() {
     console.log(this.bookingForm.value);  
     this.bookingService.createBooking(this.bookingForm.value).subscribe(
-      () => {
-                        
-      },
+        () => {
+          this.router.navigate(['/overview'], {
+            queryParams: { reservation: 'success' },
+          });
+        },
 
   );
 }

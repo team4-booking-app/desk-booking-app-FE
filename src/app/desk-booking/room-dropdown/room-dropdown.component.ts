@@ -1,5 +1,3 @@
-import { ConfirmationDialogBoxComponent } from './../confirmation-dialog-box/confirmation-dialog-box.component';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -26,6 +24,10 @@ export class RoomDropdownComponent implements OnInit {
   getSelectedRoom() {
     return this.selectedRoom;
   }
+
+
+
+
 
 
 

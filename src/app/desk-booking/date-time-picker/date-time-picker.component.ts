@@ -16,6 +16,7 @@ export class DateTimePickerComponent implements OnInit {
     endTime: new FormControl('17:00:00'),
   });
 
+
   @Output() redirectDesks: EventEmitter<any> = new EventEmitter();
 
   constructor(private bookingService: BookingService) {
@@ -53,7 +54,5 @@ export class DateTimePickerComponent implements OnInit {
   }
 
   roomDropdown = false;
-  roomDropdownAppear() {
-    this.roomDropdown = true;
-  }
+
 }
