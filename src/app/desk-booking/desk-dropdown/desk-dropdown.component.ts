@@ -1,4 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { BookingService } from '../booking.service';
 import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.component';
@@ -15,7 +21,7 @@ export interface Desks {
   templateUrl: './desk-dropdown.component.html',
   styleUrls: ['./desk-dropdown.component.scss'],
 })
-export class DeskDropdownComponent implements OnInit {
+export class DeskDropdownComponent implements OnInit, OnChanges {
   filteredDesks: any;
   selectedDesk: number;
   closeResult: string = '';
@@ -29,7 +35,9 @@ export class DeskDropdownComponent implements OnInit {
     this.filteredDesks = [];
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  ngOnChanges(): void {
     this.filteredDesks = this.desks.filter(
       (desk) => desk.roomId == this.roomOpt
     );

@@ -38,8 +38,6 @@ export class DateTimePickerComponent implements OnInit {
 
     this.reservationEnd =
       this.dateTimeForm.value.startDate + ' ' + this.dateTimeForm.value.endTime;
-    console.log(this.reservationStart);
-    console.log(this.reservationEnd);
     this.Desks$ = this.bookingService.loadDesks(
       this.reservationStart,
       this.reservationEnd
