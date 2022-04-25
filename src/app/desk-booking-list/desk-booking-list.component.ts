@@ -13,6 +13,7 @@ export class DeskBookingListComponent implements OnInit {
   reservationsList$: Observable<Reservation[]> = of();
   closeResult = '';
   isLoading: boolean = true;
+  isEmpty: boolean = false;
 
   constructor(private modalService: NgbModal, private reservationService: ReservationsService) {
   }
@@ -23,12 +24,13 @@ export class DeskBookingListComponent implements OnInit {
 
   loadReservations(): void {
     this.isLoading = true;
+    this.isEmpty=false;
     this.reservationsList$ = this.reservationService.loadReservations().pipe(tap(Response => {
       if (Response) {
         this.isLoading = false;
       }
     },
-      error => {this.isLoading=false;}));
+      error => {this.isLoading=false; this.isEmpty=true;}));
   }
 
   deleteReservation(id: string): void {
