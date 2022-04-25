@@ -41,9 +41,23 @@
       </div>
       <div class="card-body">
         <button type="button" class="btn btn-sm btn-danger" style="width: 15rem; height: 3rem; font-size: 16px"
-                id="{{reservation.reservationId}}">Cancel reservation
+                  (click)="open(content,reservation.reservationId)">Cancel reservation
         </button>
       </div>
     </div>
   </div>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Reservation</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure want to cancel reservation?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Yes</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">No</button>
+  </div>
+</ng-template>

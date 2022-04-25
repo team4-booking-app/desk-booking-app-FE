@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable, of, tap} from "rxjs";
 import {Reservation} from "../shared/reservation";
 import {ReservationsService} from "../services/reservations.service";
+import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-desk-booking-list',
@@ -10,7 +11,9 @@ import {ReservationsService} from "../services/reservations.service";
 })
 export class DeskBookingListComponent implements OnInit {
   reservationsList$: Observable<Reservation[]> = of();
-  constructor(private reservationService: ReservationsService) { }
+  closeResult = '';
+  private deleteReservation = '';
+  constructor(private modalService: NgbModal, private reservationService: ReservationsService) { }
 
   ngOnInit(): void {
     this.loadReservations();
@@ -18,6 +21,25 @@ export class DeskBookingListComponent implements OnInit {
 
   loadReservations(): void {
     this.reservationsList$ = this.reservationService.loadReservations().pipe();
+  }
+
+  open(content: any, id: any) {
+    console.warn(id);
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${DeskBookingListComponent.getDismissReason(reason)}`;
+    });
+  }
+
+  private static getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
 }
