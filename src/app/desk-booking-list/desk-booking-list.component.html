@@ -1,4 +1,8 @@
-<h3>Reservations</h3>
+<div *ngIf="!isLoading">
+  <div *ngIf="!isEmpty">
+    <h3>Reservations</h3>
+  </div>
+</div>
 
 <div class="d-flex center-content" *ngIf="isLoading">
   <div class="spinner-border" role="status">
