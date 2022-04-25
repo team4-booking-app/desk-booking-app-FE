@@ -1,0 +1,33 @@
+<form [formGroup]="dateTimeForm" (ngSubmit)="selectReservationDate()">
+    <label for="meeting-time">Choose a time for your reservation:</label><br />
+    <div>
+      <input
+        type="datetime-local"
+        id="meeting-time"
+        name="meeting-time"
+        formControlName="startDate"
+        min="09:00:00"
+        max="17:00:00"
+        step="3600"
+        dropdown = false;
+      />
+      <input
+        type="datetime-local"
+        id="meeting-time"
+        name="meeting-time"
+        formControlName="endDate"
+        min="09:00:00"
+        max="17:00:00"
+        step="3600"
+      />
+    </div>
+    <br />
+    <button
+    type="submit"
+    class="btn btn-sm btn-danger"
+    click="roomDropdownAppear()"
+    >Confirm date</button>
+</form>
+
+
+

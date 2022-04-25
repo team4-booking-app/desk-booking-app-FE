@@ -14,11 +14,13 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { OverviewComponent } from './overview/overview.component';
-import { DeskBookingComponent } from './desk-booking/desk-booking.component';
 import { RoomDropdownComponent } from './desk-booking/room-dropdown/room-dropdown.component';
 import { ConfirmationDialogBoxComponent } from './desk-booking/confirmation-dialog-box/confirmation-dialog-box.component';
 import { ConfirmationPageComponent } from './desk-booking/confirmation-page/confirmation-page.component';
 import { CountdownModule } from "ngx-countdown";
+import { DateTimePickerComponent } from './desk-booking/date-time-picker/date-time-picker.component';
+import { DeskDropdownComponent } from './desk-booking/desk-dropdown/desk-dropdown.component';
+import { BookingFormComponent } from './desk-booking/booking-form/booking-form.component';
 
 @NgModule({
   declarations: [
@@ -27,10 +29,12 @@ import { CountdownModule } from "ngx-countdown";
     FooterComponent,
     HeaderComponent,
     OverviewComponent,
-    DeskBookingComponent,
     RoomDropdownComponent,
     ConfirmationDialogBoxComponent,
-    ConfirmationPageComponent
+    ConfirmationPageComponent,
+    DateTimePickerComponent,
+    DeskDropdownComponent,
+    BookingFormComponent
   ],
   imports: [
     BrowserModule,

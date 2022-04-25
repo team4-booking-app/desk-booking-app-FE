@@ -1,6 +1,6 @@
-<button class="btn btn-lg btn-outline-primary" (click)="openModal(mymodal)">
+<!-- <button class="btn btn-lg btn-outline-primary" (click)="openModal(mymodal)">
   Open My Modal
-</button>
+</button> -->
 
 <ng-template #mymodal let-modal>
   <div class="modal-header">
@@ -11,8 +11,7 @@
     <button
       type="button"
       class="btn btn-outline-dark"
-
-      (click)="createBooking(); modal.close('Save click')"
+      (click)="modal.close('Save click')"
       [routerLink]="['/confirmation']"
     >
       Confirm
