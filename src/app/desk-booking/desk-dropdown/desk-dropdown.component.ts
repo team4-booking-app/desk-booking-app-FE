@@ -16,6 +16,7 @@ export interface Desks {
   styleUrls: ['./desk-dropdown.component.scss'],
 })
 export class DeskDropdownComponent implements OnInit {
+  filteredDesks: any;
   selectedDesk: number;
 
   @Input() desks: any[];
@@ -24,11 +25,13 @@ export class DeskDropdownComponent implements OnInit {
   constructor() {
     this.selectedDesk = 0;
     this.desks = [];
+    this.filteredDesks = [];
   }
 
   ngOnInit(): void {
-    console.log(this.roomOpt);
-    console.log(this.desks);
+    this.filteredDesks = this.desks.filter(
+      (desk) => desk.roomId == this.roomOpt
+    );
   }
 
   selectDeskChangeHandler(event: any) {
