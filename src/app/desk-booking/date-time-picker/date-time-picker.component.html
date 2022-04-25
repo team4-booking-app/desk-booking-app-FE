@@ -1,6 +1,31 @@
 <form [formGroup]="dateTimeForm" (ngSubmit)="selectReservationDate()">
-  <label for="meeting-time">Choose a time for your appointment:</label><br />
+  <label for="meeting-time">Select date and time for your reservation:</label
+  ><br />
   <div>
+    <!-- <input
+      type="date"
+      id="meeting-time"
+      name="meeting-time"
+      formControlName="startDate"
+    />
+    <input
+      type="time"
+      id="meeting-time"
+      name="meeting-time"
+      formControlName="startTime"
+      min="09:00:00"
+      max="17:00:00"
+      step="3600"
+    />
+    <input
+      type="datetime-local"
+      id="meeting-time"
+      name="meeting-time"
+      formControlName="endTime"
+      min="09:00:00"
+      max="17:00:00"
+      step="3600"
+    /> -->
     <input
       type="datetime-local"
       id="meeting-time"
@@ -14,7 +39,7 @@
       type="datetime-local"
       id="meeting-time"
       name="meeting-time"
-      formControlName="endDate"
+      formControlName="endTime"
       min="09:00:00"
       max="17:00:00"
       step="3600"

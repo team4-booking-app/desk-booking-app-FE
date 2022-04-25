@@ -18,6 +18,8 @@ export class BookingService {
   );
 
   loadDesks(reservationDate: any): Observable<Desks[]> {
+    this.desksURL.searchParams.delete('reservationStart');
+    this.desksURL.searchParams.delete('reservationEnd');
     this.desksURL.searchParams.append(
       'reservationStart',
       reservationDate.startDate
@@ -25,7 +27,7 @@ export class BookingService {
 
     this.desksURL.searchParams.append(
       'reservationEnd',
-      reservationDate.endDate
+      reservationDate.endTime
     );
     return this.http.get<Desks[]>(this.desksURL.href);
   }

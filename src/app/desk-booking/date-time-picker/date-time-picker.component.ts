@@ -11,7 +11,7 @@ import { BookingService, Desks } from '../booking.service';
 export class DateTimePickerComponent implements OnInit {
   dateTimeForm: FormGroup = new FormGroup({
     startDate: new FormControl('2022-04-21T09:00:00'),
-    endDate: new FormControl('2022-04-21T17:00:00'),
+    endTime: new FormControl('2022-04-21T17:00:00'),
   });
 
   @Output() redirectDesks: EventEmitter<any> = new EventEmitter();
@@ -25,11 +25,12 @@ export class DateTimePickerComponent implements OnInit {
   selectReservationDate() {
     this.dateTimeForm.value.startDate =
       this.dateTimeForm.value.startDate.replace('T', ' ');
-    this.dateTimeForm.value.endDate = this.dateTimeForm.value.endDate.replace(
+    this.dateTimeForm.value.endTime = this.dateTimeForm.value.endTime.replace(
       'T',
       ' '
     );
 
+    console.log(this.dateTimeForm.value);
     this.Desks$ = this.bookingService.loadDesks(this.dateTimeForm.value);
     this.Desks$.subscribe((deskList) => {
       this.redirectDesks.emit(deskList);
