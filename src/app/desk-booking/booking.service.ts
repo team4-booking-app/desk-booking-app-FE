@@ -17,18 +17,12 @@ export class BookingService {
     'https://team4-backend-stage-app.herokuapp.com/api/v1/desks/available'
   );
 
-  loadDesks(reservationDate: any): Observable<Desks[]> {
+  loadDesks(reservationStart: any, reservationEnd: any): Observable<Desks[]> {
     this.desksURL.searchParams.delete('reservationStart');
     this.desksURL.searchParams.delete('reservationEnd');
-    this.desksURL.searchParams.append(
-      'reservationStart',
-      reservationDate.startDate
-    );
+    this.desksURL.searchParams.append('reservationStart', reservationStart);
 
-    this.desksURL.searchParams.append(
-      'reservationEnd',
-      reservationDate.endTime
-    );
+    this.desksURL.searchParams.append('reservationEnd', reservationEnd);
     return this.http.get<Desks[]>(this.desksURL.href);
   }
 }
