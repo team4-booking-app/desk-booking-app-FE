@@ -11,33 +11,40 @@ import { BookingService, Desks } from '../booking.service';
 })
 export class DateTimePickerComponent implements OnInit {
   dateTimeForm: FormGroup = new FormGroup({
-    startDate: new FormControl('2022-04-21T09:00:00'),
-    endDate: new FormControl('2022-04-21T17:00:00'),
+    startDate: new FormControl('2022-04-21'),
+    startTime: new FormControl('09:00:00'),
+    endTime: new FormControl('17:00:00'),
   });
 
-  @Output() redirect: EventEmitter<any> = new EventEmitter();
+  @Output() redirectDesks: EventEmitter<any> = new EventEmitter();
 
   constructor(private bookingService: BookingService) {
-    this.text = 'bandom';
+    this.reservationStart = '';
+    this.reservationEnd = '';
   }
 
+  reservationStart: string;
+  reservationEnd: string;
   Desks$: Observable<Desks[]> = of();
-  text: string;
-  listas: Desks[] = [];
+
   ngOnInit() {}
 
   selectReservationDate() {
-    this.dateTimeForm.value.startDate =
-      this.dateTimeForm.value.startDate.replace('T', ' ');
-    this.dateTimeForm.value.endDate = this.dateTimeForm.value.endDate.replace(
-      'T',
-      ' '
+    this.reservationStart =
+      this.dateTimeForm.value.startDate +
+      ' ' +
+      this.dateTimeForm.value.startTime;
+
+    this.reservationEnd =
+      this.dateTimeForm.value.startDate + ' ' + this.dateTimeForm.value.endTime;
+
+    this.Desks$ = this.bookingService.loadDesks(
+      this.reservationStart,
+      this.reservationEnd
     );
-
-    this.Desks$ = this.bookingService.loadDesks(this.dateTimeForm.value);
-    this.Desks$.subscribe((deskList) => console.log(deskList));
-
-    this.redirect.emit(this.text);
+    this.Desks$.subscribe((deskList) => {
+      this.redirectDesks.emit(deskList);
+    });
   }
 
   getReservationDate() {

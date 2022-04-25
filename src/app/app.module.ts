@@ -19,7 +19,6 @@ import { ConfirmationDialogBoxComponent } from './desk-booking/confirmation-dial
 import { ConfirmationPageComponent } from './desk-booking/confirmation-page/confirmation-page.component';
 import { CountdownModule } from "ngx-countdown";
 import { DateTimePickerComponent } from './desk-booking/date-time-picker/date-time-picker.component';
-import { DeskDropdownComponent } from './desk-booking/desk-dropdown/desk-dropdown.component';
 import { BookingFormComponent } from './desk-booking/booking-form/booking-form.component';
 
 @NgModule({
@@ -33,8 +32,8 @@ import { BookingFormComponent } from './desk-booking/booking-form/booking-form.c
     ConfirmationDialogBoxComponent,
     ConfirmationPageComponent,
     DateTimePickerComponent,
-    DeskDropdownComponent,
-    BookingFormComponent
+    BookingFormComponent,
+
   ],
   imports: [
     BrowserModule,

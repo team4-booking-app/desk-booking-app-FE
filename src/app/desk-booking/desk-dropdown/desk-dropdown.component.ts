@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, of } from 'rxjs';
 import { BookingService } from '../booking.service';
+import { ConfirmationDialogBoxComponent } from '../confirmation-dialog-box/confirmation-dialog-box.component';
 import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.component';
 import { RoomDropdownComponent } from '../room-dropdown/room-dropdown.component';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ConfirmationDialogBoxComponent } from '../confirmation-dialog-box/confirmation-dialog-box.component';
 
 export interface Desks {
   deskId: number;
@@ -43,9 +43,12 @@ export class DeskDropdownComponent implements OnInit {
   getSelectedDesk() {
     return this.selectedDesk;
   }
-
   openModal() {
     this.modalService.open(ConfirmationDialogBoxComponent);
  
   }
 }
+
+
+
+

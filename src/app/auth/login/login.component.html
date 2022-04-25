@@ -73,7 +73,6 @@
               </div>
 
               <div class="d-flex align-items-center">
-
                 <button
                   type="submit"
                   [disabled]="loginForm.invalid"
@@ -83,13 +82,16 @@
                 </button>
               </div>
               <div class="pt-2">
-              <div
-              class="alert alert-danger"
-              *ngIf="isLoginFailed"
-            >
-              Login failed: Email or password is incorrect.
-            </div>
-          </div>
+                <div class="alert alert-danger" *ngIf="isLoginFailed">
+                  Login failed: Email or password is incorrect.
+                </div>
+              </div>
+
+              <div class="pt-2">
+                <div class="alert alert-success" *ngIf="infoMessage">
+                  {{ infoMessage }}
+                </div>
+              </div>
             </form>
           </div>
 

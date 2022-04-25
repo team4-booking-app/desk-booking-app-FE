@@ -10,32 +10,33 @@ export interface Desks {
   roomId: number;
 }
 
+export interface Desks {
+  deskId: number;
+  deskName: string;
+  roomId: number;
+}
 @Injectable({
   providedIn: 'root',
 })
 export class BookingService {
+  constructor(private http: HttpClient) {}
+
+  private token = localStorage.getItem('auth');
+  private helper = new JwtHelperService();
+  private decodedToken = this.helper.decodeToken(this.token!)
+  
+  private resUrl = new URL('https://team4-backend-stage-app.herokuapp.com/api/v1/reservations');
+
   private desksURL = new URL(
     'https://team4-backend-stage-app.herokuapp.com/api/v1/desks/available'
   );
-  private resUrl = 'https://team4-backend-stage-app.herokuapp.com/api/v1/reservations';
 
-  private helper = new JwtHelperService();
-  private token = localStorage.getItem('auth');
-  private decodedToken = this.helper.decodeToken(this.token!);
+  loadDesks(reservationStart: any, reservationEnd: any): Observable<Desks[]> {
+    this.desksURL.searchParams.delete('reservationStart');
+    this.desksURL.searchParams.delete('reservationEnd');
+    this.desksURL.searchParams.append('reservationStart', reservationStart);
 
-
-  constructor(private http: HttpClient) {}
-
-  loadDesks(reservationDate: any): Observable<Desks[]> {
-    this.desksURL.searchParams.append(
-      'reservationStart',
-      reservationDate.startDate
-    );
-
-    this.desksURL.searchParams.append(
-      'reservationEnd',
-      reservationDate.endDate
-    );
+    this.desksURL.searchParams.append('reservationEnd', reservationEnd);
     return this.http.get<Desks[]>(this.desksURL.href);
   }
 
@@ -43,8 +44,6 @@ export class BookingService {
     this.decodedToken;
   return this.http.post<any>(this.resUrl, data
  )
-
-
 }
 
 
@@ -53,7 +52,7 @@ export class BookingService {
 
 
 
-}
+
 
 
 

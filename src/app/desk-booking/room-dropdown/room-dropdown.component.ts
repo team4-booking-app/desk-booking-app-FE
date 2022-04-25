@@ -1,17 +1,18 @@
 import { ConfirmationDialogBoxComponent } from './../confirmation-dialog-box/confirmation-dialog-box.component';
-import { Component, OnInit} from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-room-dropdown',
   templateUrl: './room-dropdown.component.html',
   styleUrls: ['./room-dropdown.component.scss'],
 })
-
 export class RoomDropdownComponent implements OnInit {
   selectedRoom: number;
 
-  constructor(private modalService: NgbModal) {
+  @Output() redirectRoom: EventEmitter<any> = new EventEmitter();
+
+  constructor() {
     this.selectedRoom = 0;
   }
 
@@ -19,12 +20,14 @@ export class RoomDropdownComponent implements OnInit {
 
   selectRoomChangeHandler(event: any) {
     this.selectedRoom = event.target.value;
-    console.log(this.selectedRoom);
+    this.redirectRoom.emit(this.selectedRoom);
   }
 
   getSelectedRoom() {
     return this.selectedRoom;
   }
+
+
 
 
 
