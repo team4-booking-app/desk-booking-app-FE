@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable, of, tap} from "rxjs";
 import {Reservation} from "../shared/reservation";
 import {ReservationsService} from "../services/reservations.service";
@@ -12,18 +12,26 @@ import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 export class DeskBookingListComponent implements OnInit {
   reservationsList$: Observable<Reservation[]> = of();
   closeResult = '';
-  constructor(private modalService: NgbModal, private reservationService: ReservationsService) { }
+  isLoading: boolean = true;
+
+  constructor(private modalService: NgbModal, private reservationService: ReservationsService) {
+  }
 
   ngOnInit(): void {
     this.loadReservations();
   }
 
   loadReservations(): void {
-    this.reservationsList$ = this.reservationService.loadReservations().pipe();
+    this.isLoading = true;
+    this.reservationsList$ = this.reservationService.loadReservations().pipe(tap(Response => {
+      if (Response) {
+        this.isLoading = false;
+      }
+    },
+      error => {this.isLoading=false;}));
   }
 
   deleteReservation(id: string): void {
-    console.log("Delete: " + id);
     this.reservationService.deleteReservation(id).subscribe(() => {
       this.loadReservations();
     });
@@ -32,7 +40,7 @@ export class DeskBookingListComponent implements OnInit {
   open(content: any, id: any) {
     console.warn(id);
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      if(result === 'Delete reservation'){
+      if (result === 'Delete reservation') {
         this.deleteReservation(id);
       }
       this.closeResult = `Closed with: ${result}`;
@@ -46,8 +54,7 @@ export class DeskBookingListComponent implements OnInit {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
-    }
-    else {
+    } else {
       return `with: ${reason}`;
     }
   }

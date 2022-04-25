@@ -1,5 +1,10 @@
 <h3>Reservations</h3>
 
+<div class="d-flex center-content" *ngIf="isLoading">
+  <div class="spinner-border" role="status">
+    <span class="sr-only" id="loading"></span>
+  </div>
+</div>
 <div class="row mt-5 text-center">
   <div class="col max-w" *ngFor="let reservation of reservationsList$ | async">
     <div class="card text-white bg-custom mb-3 w-100">
@@ -41,6 +46,7 @@
     </div>
   </div>
 </div>
+
 
 <ng-template #content let-modal>
   <div class="modal-header">

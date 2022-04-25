@@ -22,7 +22,6 @@ export class ReservationsService {
   }
 
   deleteReservation(id: string){
-    console.log("Worked " + this.reservationsUrl.href);
     return this.httpClient.delete(this.reservationsUrl.href + id);
   }
 }
