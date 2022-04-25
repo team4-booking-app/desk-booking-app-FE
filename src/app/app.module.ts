@@ -1,3 +1,4 @@
+import { DeskDropdownComponent } from './desk-booking/desk-dropdown/desk-dropdown.component';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -33,6 +34,7 @@ import { BookingFormComponent } from './desk-booking/booking-form/booking-form.c
     ConfirmationPageComponent,
     DateTimePickerComponent,
     BookingFormComponent,
+    DeskDropdownComponent
 
   ],
   imports: [

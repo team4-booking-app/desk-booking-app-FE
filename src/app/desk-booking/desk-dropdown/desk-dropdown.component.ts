@@ -34,6 +34,7 @@ export class DeskDropdownComponent implements OnInit {
     this.filteredDesks = this.desks.filter(
       (desk) => desk.roomId == this.roomOpt
     );
+    console.log(this.filteredDesks);
   }
 
   selectDeskChangeHandler(event: any) {
