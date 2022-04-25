@@ -1,4 +1,6 @@
 <select (change)="selectDeskChangeHandler($event)">
   <option disabled selected value>-- select a desk --</option>
-  <option>{{ data }}</option>
+  <option *ngFor="let desk of desks" [value]="desk.deskId">
+    {{ desk.deskName }}
+  </option>
 </select>

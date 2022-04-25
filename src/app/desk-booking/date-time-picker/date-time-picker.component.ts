@@ -14,15 +14,12 @@ export class DateTimePickerComponent implements OnInit {
     endDate: new FormControl('2022-04-21T17:00:00'),
   });
 
-  @Output() redirect: EventEmitter<any> = new EventEmitter();
+  @Output() redirectDesks: EventEmitter<any> = new EventEmitter();
 
-  constructor(private bookingService: BookingService) {
-    this.text = 'bandom';
-  }
+  constructor(private bookingService: BookingService) {}
 
   Desks$: Observable<Desks[]> = of();
-  text: string;
-  listas: Desks[] = [];
+
   ngOnInit() {}
 
   selectReservationDate() {
@@ -34,9 +31,9 @@ export class DateTimePickerComponent implements OnInit {
     );
 
     this.Desks$ = this.bookingService.loadDesks(this.dateTimeForm.value);
-    this.Desks$.subscribe((deskList) => console.log(deskList));
-
-    this.redirect.emit(this.text);
+    this.Desks$.subscribe((deskList) => {
+      this.redirectDesks.emit(deskList);
+    });
   }
 
   getReservationDate() {

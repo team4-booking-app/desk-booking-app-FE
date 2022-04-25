@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-dropdown',
@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class RoomDropdownComponent implements OnInit {
   selectedRoom: number;
 
+  @Output() redirectRoom: EventEmitter<any> = new EventEmitter();
+
   constructor() {
     this.selectedRoom = 0;
   }
@@ -16,6 +18,7 @@ export class RoomDropdownComponent implements OnInit {
 
   selectRoomChangeHandler(event: any) {
     this.selectedRoom = event.target.value;
+    this.redirectRoom.emit(this.selectedRoom);
   }
 
   getSelectedRoom() {

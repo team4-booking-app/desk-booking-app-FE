@@ -16,7 +16,8 @@ export interface Desks {
 export class BookingFormComponent implements OnInit {
   bookingForm: FormGroup = new FormGroup({});
   isShown: boolean = false;
-  parentData: any;
+  deskData: any;
+  roomData: any;
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {}

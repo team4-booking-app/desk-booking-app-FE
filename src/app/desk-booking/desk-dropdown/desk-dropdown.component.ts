@@ -18,25 +18,17 @@ export interface Desks {
 export class DeskDropdownComponent implements OnInit {
   selectedDesk: number;
 
-  @Input() data: any[];
+  @Input() desks: any[];
+  @Input() roomOpt: any;
+
   constructor() {
-    // private roomPicker: RoomDropdownComponent // private dateTimePicker: DateTimePickerComponent, // private bookingService: BookingService,
     this.selectedDesk = 0;
-    this.data = [];
-    // this.SelectedRoom$ = 0;
-    // this.SelectedDesks = [];
+    this.desks = [];
   }
 
-  // Desks$: Observable<Desks[]> = of();
-  // SelectedRoom$: number;
-  // SelectedDesks: Desks[];
-
   ngOnInit(): void {
-    // this.Desks$ = this.bookingService.loadDesks(
-    //   this.dateTimePicker.getReservationDate()
-    // );
-    // this.SelectedRoom$ = this.roomPicker.getSelectedRoom();
-    // console.log(this.data.deskName);
+    console.log(this.roomOpt);
+    console.log(this.desks);
   }
 
   selectDeskChangeHandler(event: any) {

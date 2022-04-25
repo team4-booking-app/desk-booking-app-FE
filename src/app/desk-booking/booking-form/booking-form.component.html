@@ -1,10 +1,17 @@
 <form [formGroup]="bookingForm" (ngSubmit)="createBooking()">
   <p>WORKING</p>
-  <app-time-picker (redirect)="parentData = $event"></app-time-picker><br />
-  <app-dropdown (change)="toggleShow()"></app-dropdown><br />
+  <app-time-picker (redirectDesks)="deskData = $event"></app-time-picker><br />
+  <app-dropdown
+    (change)="toggleShow()"
+    (redirectRoom)="roomData = $event"
+  ></app-dropdown
+  ><br />
   <ng-container *ngIf="isShown">
     <ng-container>
-      <app-desk-dropdown [data]="parentData"></app-desk-dropdown>
+      <app-desk-dropdown
+        [desks]="deskData"
+        [roomOpt]="roomData"
+      ></app-desk-dropdown>
     </ng-container>
   </ng-container>
   <br />
