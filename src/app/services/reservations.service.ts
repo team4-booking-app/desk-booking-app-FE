@@ -11,12 +11,18 @@ export class ReservationsService {
   constructor(private httpClient: HttpClient) {}
   private rawToken = localStorage.getItem('auth');
   private helper = new JwtHelperService();
-  private reservationsUrl = new URL('https://team4-backend-stage-app.herokuapp.com/api/v1/reservations');
+  private bookingsUrl = new URL('https://team4-backend-stage-app.herokuapp.com/api/v1/bookings');
+  private reservationsUrl = new URL('https://team4-backend-stage-app.herokuapp.com/api/v1/reservations/');
 
   loadReservations(): Observable<Reservation[]> {
     this.rawToken = localStorage.getItem('auth');
-    this.reservationsUrl.searchParams.delete('userEmail');
-    this.reservationsUrl.searchParams.append('userEmail',this.helper.decodeToken(this.rawToken!).sub);
-    return this.httpClient.get<Reservation[]>(this.reservationsUrl.href);
+    this.bookingsUrl.searchParams.delete('userEmail');
+    this.bookingsUrl.searchParams.append('userEmail',this.helper.decodeToken(this.rawToken!).sub);
+    return this.httpClient.get<Reservation[]>(this.bookingsUrl.href);
+  }
+
+  deleteReservation(id: string){
+    console.log("Worked " + this.reservationsUrl.href);
+    return this.httpClient.delete(this.reservationsUrl.href + id);
   }
 }

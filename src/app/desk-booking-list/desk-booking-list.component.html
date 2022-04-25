@@ -4,19 +4,13 @@
   <div class="col max-w" *ngFor="let reservation of reservationsList$ | async">
     <div class="card text-white bg-custom mb-3 w-100">
       <div class="card-header"><h5>Reservation</h5></div>
-      <div class="flex-child">
-        <p class="fw-bold card-detail"
-           style="font-size: 18px; margin-left: auto; margin-right: auto; margin-top: 5%; width: fit-content;
-           padding-left: 10%; padding-right: 10%;">{{ reservation.userEmail }}</p>
-        <hr>
-      </div>
       <div class="grid-container align-items-center">
         <div class="flex-child h-fit left margin-left-5">
           <h5 class="card-title fw-bold" style="font-size: 25px">Room</h5>
         </div>
         <div class="flex-child center-content margin-right-5">
           <p class="fw-bold card-detail w-fit"
-             style="font-size: 14px; margin-top: 17px;"> Room {{ reservation.roomId }}</p>
+             style="font-size: 14px; margin-top: 17px;"> {{ reservation.roomId }}</p>
         </div>
       </div>
       <div class="grid-container align-items-center">
@@ -25,7 +19,7 @@
         </div>
         <div class="flex-child center-content margin-right-5">
           <p class="fw-bold card-detail w-fit"
-             style="font-size: 14px; margin-top: 17px;"> Desk {{ reservation.deskId }}</p>
+             style="font-size: 14px; margin-top: 17px;"> {{ reservation.deskId }}</p>
         </div>
       </div>
       <div class="grid-container align-items-center">
@@ -57,7 +51,7 @@
     <p>Are you sure want to cancel reservation?</p>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Yes</button>
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">No</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Delete reservation')">Yes</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Dismiss')">No</button>
   </div>
 </ng-template>

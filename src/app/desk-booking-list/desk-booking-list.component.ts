@@ -12,7 +12,6 @@ import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 export class DeskBookingListComponent implements OnInit {
   reservationsList$: Observable<Reservation[]> = of();
   closeResult = '';
-  private deleteReservation = '';
   constructor(private modalService: NgbModal, private reservationService: ReservationsService) { }
 
   ngOnInit(): void {
@@ -23,9 +22,19 @@ export class DeskBookingListComponent implements OnInit {
     this.reservationsList$ = this.reservationService.loadReservations().pipe();
   }
 
+  deleteReservation(id: string): void {
+    console.log("Delete: " + id);
+    this.reservationService.deleteReservation(id).subscribe(() => {
+      this.loadReservations();
+    });
+  }
+
   open(content: any, id: any) {
     console.warn(id);
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      if(result === 'Delete reservation'){
+        this.deleteReservation(id);
+      }
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${DeskBookingListComponent.getDismissReason(reason)}`;
@@ -37,7 +46,8 @@ export class DeskBookingListComponent implements OnInit {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
-    } else {
+    }
+    else {
       return `with: ${reason}`;
     }
   }
