@@ -5,6 +5,7 @@ import {
   OnChanges,
   SimpleChanges,
   forwardRef,
+  OnDestroy,
 } from '@angular/core';
 import { Observable, of, Subscription } from 'rxjs';
 import { BookingService } from '../booking.service';
@@ -36,7 +37,7 @@ export interface Desks {
       multi: true
     }]
 })
-export class DeskDropdownComponent implements OnInit, OnChanges {
+export class DeskDropdownComponent implements OnInit, OnChanges, ControlValueAccessor, OnDestroy {
   deskDropdownForm: FormGroup;
   filteredDesks: any;
   selectedDesk: number;
@@ -48,7 +49,7 @@ export class DeskDropdownComponent implements OnInit, OnChanges {
 
   constructor(private formBuilder: FormBuilder) {
     this.deskDropdownForm = this.formBuilder.group({
-      deskName: ['']
+      deskName: []
     })
 
     this.selectedDesk = 0;
