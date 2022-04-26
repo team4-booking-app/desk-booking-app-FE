@@ -1,7 +1,9 @@
-<select (change)="selectDeskChangeHandler($event)">
+<div [formGroup]="deskDropdownForm">
+<select (change)="selectDeskChangeHandler($event)" formControlName="deskName">
     <option disabled selected value>-- select a desk --</option>
     <option *ngFor="let desk of filteredDesks" [value]="desk.deskId">
       {{ desk.deskName }}
     </option>
   </select>
+</div>
 

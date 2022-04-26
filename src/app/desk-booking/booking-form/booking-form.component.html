@@ -1,20 +1,32 @@
-
 <form [formGroup]="bookingForm" (ngSubmit)="createBooking()">
-    <app-time-picker formControlName="time" (redirectDesks)="deskData = $event"></app-time-picker><br />
-    <app-room-dropdown formControlName="roomDropdown"
-      (change)="toggleShow()"
-      (redirectRoom)="roomData = $event"
-    ></app-room-dropdown
-    ><br />
-    <ng-container>
-      <ng-container *ngIf="isShown">
-        <app-desk-dropdown formControlName="deskDropdown"
-          [desks]="deskData"
-          [roomOpt]="roomData"
-        ></app-desk-dropdown>
-      </ng-container>
+
+  <app-time-picker
+    formControlName="time"
+    (redirectDesks)="deskData = $event"
+  ></app-time-picker
+
+  ><br />
+
+  <app-room-dropdown
+    formControlName="roomDropdown"
+    (change)="toggleShow()"
+    (redirectRoom)="roomData = $event"
+  ></app-room-dropdown
+
+  ><br />
+
+  <ng-container>
+    <ng-container *ngIf="isShown">
+      <app-desk-dropdown
+        formControlName="deskDropdown"
+        [desks]="deskData"
+        [roomOpt]="roomData"
+      ></app-desk-dropdown>
     </ng-container>
-    <br />
+  </ng-container>
+
+  <br />
+  
   <button
     type="submit"
     class="btn btn-sm btn-success"
@@ -24,10 +36,10 @@
   </button>
 
   <button
-  type="button"
-  class="btn btn-sm btn-outline-dark m-2"
-  [routerLink]="['/overview']"
->
-  Cancel
-</button>
+    type="button"
+    class="btn btn-sm btn-outline-dark m-2"
+    [routerLink]="['/overview']"
+  >
+    Cancel
+  </button>
 </form>
