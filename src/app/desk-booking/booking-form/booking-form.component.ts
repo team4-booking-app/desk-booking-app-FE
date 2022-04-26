@@ -24,6 +24,10 @@ export class BookingFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.bookingForm = this.formBuilder.group({
+      time: [],
+      roomDropdown: [],
+      deskDropdown: []
+
       
     });
   }
