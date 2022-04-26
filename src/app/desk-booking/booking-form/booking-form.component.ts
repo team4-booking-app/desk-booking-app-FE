@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import {Component, OnInit, EventEmitter, Output} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BookingService } from '../booking.service';
@@ -24,12 +24,17 @@ export class BookingFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.bookingForm = this.formBuilder.group({
-      time: [],
-      roomId: [],
-      deskId: Number
+      userEmail: [],
+      deskId: Number,
+      reservationStart: [],
+      reservationEnd: []
 
-      
+
     });
+
+    this.bookingForm.controls['userEmail'].setValue(this.bookingService.getUserEmail());
+
+    this.bookingForm.valueChanges.subscribe(newVal => console.log(newVal));
   }
 
   toggleShow() {
@@ -39,7 +44,7 @@ export class BookingFormComponent implements OnInit {
 
 
   createBooking() {
-    console.log(this.bookingForm.value);  
+    console.log(this.bookingForm.value);
     this.bookingService.createBooking(this.bookingForm.value).subscribe(
         () => {
           this.router.navigate(['/confirmation'], {
@@ -49,5 +54,5 @@ export class BookingFormComponent implements OnInit {
 
   );
 }
-  
+
 }

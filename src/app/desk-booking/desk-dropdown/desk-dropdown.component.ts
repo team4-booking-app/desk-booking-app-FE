@@ -43,6 +43,7 @@ export class DeskDropdownComponent implements OnInit, OnChanges, ControlValueAcc
   selectedDesk: number;
   subscriptions: Subscription[] = [];
 
+  @Input() bookingForm!: FormGroup;
   @Input() desks: any[];
   @Input() roomOpt: any;
   value: any;

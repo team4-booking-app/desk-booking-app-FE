@@ -18,7 +18,7 @@ export class BookingService {
   private decodedToken = this.helper.decodeToken(this.token!);
 
   private resUrl = 'https://team4-backend-stage-app.herokuapp.com/api/v1/reservations';
-  
+
   private desksURL = new URL(
     'https://team4-backend-stage-app.herokuapp.com/api/v1/desks/available'
   );
@@ -41,6 +41,10 @@ export class BookingService {
 
     this.desksURL.searchParams.append('reservationEnd', reservationEnd);
     return this.http.get<Desks[]>(this.desksURL.href);
+  }
+
+  getUserEmail(){
+    return this.decodedToken.sub;;
   }
 
   createBooking(data: any): Observable<any> {

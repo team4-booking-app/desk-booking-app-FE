@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, forwardRef, OnDestroy } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, forwardRef, OnDestroy, Input} from '@angular/core';
 import {
   ControlValueAccessor,
   NG_VALUE_ACCESSOR,
@@ -24,7 +24,6 @@ export class RoomDropdownComponent implements OnInit, ControlValueAccessor, OnDe
  roomDropdownForm: FormGroup;
   selectedRoom: number;
   subscriptions: Subscription[] = [];
-
 
   @Output() redirectRoom: EventEmitter<any> = new EventEmitter();
   value: any;

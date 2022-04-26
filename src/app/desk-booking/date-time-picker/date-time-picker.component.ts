@@ -1,5 +1,5 @@
 import { RoomDropdownComponent } from './../room-dropdown/room-dropdown.component';
-import { Component, OnInit, Output, EventEmitter, forwardRef, OnDestroy } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, forwardRef, OnDestroy, Input} from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { Observable, of, Subscription } from 'rxjs';
 import { BookingService, Desks } from '../booking.service';
@@ -24,8 +24,7 @@ export class DateTimePickerComponent implements OnDestroy, ControlValueAccessor 
   onTouched: any = () => {};
 
 
-
-
+  @Input() bookingForm!: FormGroup;
   @Output() redirectDesks: EventEmitter<any> = new EventEmitter();
   value: any;
 
@@ -56,7 +55,7 @@ export class DateTimePickerComponent implements OnDestroy, ControlValueAccessor 
   getReservationDate() {
     return this.dateTimeForm.value;
   }
-  
+
   selectReservationDate() {
     this.reservationStart =
       this.dateTimeForm.value.startDate +
@@ -69,6 +68,8 @@ export class DateTimePickerComponent implements OnDestroy, ControlValueAccessor 
       this.reservationStart,
       this.reservationEnd
     );
+    this.bookingForm?.controls['reservationStart'].setValue(this.reservationStart);
+    this.bookingForm?.controls['reservationEnd'].setValue(this.reservationEnd);
     this.Desks$.subscribe((deskList) => {
       this.redirectDesks.emit(deskList);
     });
