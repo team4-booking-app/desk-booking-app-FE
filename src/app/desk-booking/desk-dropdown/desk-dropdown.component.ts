@@ -49,7 +49,7 @@ export class DeskDropdownComponent implements OnInit, OnChanges, ControlValueAcc
 
   constructor(private formBuilder: FormBuilder) {
     this.deskDropdownForm = this.formBuilder.group({
-      deskName: []
+      deskId: Number
     })
 
     this.selectedDesk = 0;
@@ -95,6 +95,7 @@ export class DeskDropdownComponent implements OnInit, OnChanges, ControlValueAcc
 
   selectDeskChangeHandler(event: any) {
     this.selectedDesk = event.target.value;
+    console.log(this.selectedDesk);
   }
 
   getSelectedDesk() {
@@ -104,6 +105,8 @@ export class DeskDropdownComponent implements OnInit, OnChanges, ControlValueAcc
   ngOnDestroy() {
     this.subscriptions.forEach(s => s.unsubscribe());
   }
+
+
 }
 
 

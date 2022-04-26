@@ -32,7 +32,7 @@ export class RoomDropdownComponent implements OnInit, ControlValueAccessor, OnDe
   constructor(private formBuilder: FormBuilder) {
     this.selectedRoom = 0;
     this.roomDropdownForm = this.formBuilder.group({
-      roomName: []
+      roomId: []
     });
 
     this.subscriptions.push(
