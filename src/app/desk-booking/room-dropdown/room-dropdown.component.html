@@ -1,8 +1,9 @@
+<div [formGroup]="roomDropdownForm">
 <div class="row">
   <div class="col">
     <label>Select a room: </label>
     <div class="col">
-      <select (change)="selectRoomChangeHandler($event)">
+      <select (change)="selectRoomChangeHandler($event)" formControlName="roomId">
         <option disabled selected value>-- select a room --</option>
         <option value="1">Room 1</option>
         <option value="2">Room 2</option>
@@ -10,3 +11,8 @@
     </div>
   </div>
 </div>
+</div>
+
+
+
+

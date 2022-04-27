@@ -1,6 +1,7 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import {Component, OnInit, EventEmitter, Output} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { BookingService } from '../booking.service';
 
 export interface Desks {
   deskId: number;
@@ -13,19 +14,45 @@ export interface Desks {
   templateUrl: './booking-form.component.html',
   styleUrls: ['./booking-form.component.scss'],
 })
+
 export class BookingFormComponent implements OnInit {
-  bookingForm: FormGroup = new FormGroup({});
+  bookingForm!: FormGroup;
   isShown: boolean = false;
   deskData: any;
   roomData: any;
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private router: Router, private route: ActivatedRoute, private bookingService: BookingService, private formBuilder: FormBuilder) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.bookingForm = this.formBuilder.group({
+      userEmail: [],
+      deskId: Number,
+      reservationStart: [],
+      reservationEnd: []
+
+
+    });
+
+    this.bookingForm.controls['userEmail'].setValue(this.bookingService.getUserEmail());
+
+    this.bookingForm.valueChanges.subscribe(newVal => console.log(newVal));
+  }
 
   toggleShow() {
     this.isShown = false;
     this.isShown = !this.isShown;
   }
 
-  createBooking() {}
+
+  createBooking() {
+    console.log(this.bookingForm.value);
+    this.bookingService.createBooking(this.bookingForm.value).subscribe(
+        () => {
+          this.router.navigate(['/confirmation'], {
+            queryParams: { reservation: 'success' },
+          });
+        },
+
+  );
+}
+
 }
