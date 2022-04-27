@@ -1,0 +1,70 @@
+<div *ngIf="!isLoading">
+  <div *ngIf="!isEmpty">
+    <h3>Reservations</h3>
+  </div>
+</div>
+
+<div class="d-flex center-content" *ngIf="isLoading">
+  <div class="spinner-border" role="status">
+    <span class="sr-only" id="loading"></span>
+  </div>
+</div>
+<div class="row mt-5 text-center">
+  <div class="col max-w" *ngFor="let reservation of reservationsList$ | async">
+    <div class="card text-white bg-custom mb-3 w-100">
+      <div class="card-header"><h5>Reservation</h5></div>
+      <div class="grid-container align-items-center">
+        <div class="flex-child h-fit left margin-left-5">
+          <h5 class="card-title fw-bold" style="font-size: 25px">Room</h5>
+        </div>
+        <div class="flex-child center-content margin-right-5">
+          <p class="fw-bold card-detail w-fit"
+             style="font-size: 14px; margin-top: 17px;"> {{ reservation.roomId }}</p>
+        </div>
+      </div>
+      <div class="grid-container align-items-center">
+        <div class="flex-child h-fit left margin-left-5">
+          <h5 class="card-title fw-bold" style="font-size: 25px">Desk</h5>
+        </div>
+        <div class="flex-child center-content margin-right-5">
+          <p class="fw-bold card-detail w-fit"
+             style="font-size: 14px; margin-top: 17px;"> {{ reservation.deskName.substring(5, 6) }}</p>
+        </div>
+      </div>
+      <div class="grid-container align-items-center">
+        <div class="flex-child h-fit left margin-left-5">
+          <h5 class="card-title fw-bold" style="font-size: 25px">Time</h5>
+        </div>
+        <div class="flex-child center-content margin-right-5">
+          <p class="fw-bold card-detail w-fit"
+             style="font-size: 14px; margin-top: 17px;"> {{ reservation.reservationStart.substring(0, 10) }}
+            <br> {{ reservation.reservationStart.substring(11, 16) }}
+            - {{ reservation.reservationEnd.substring(11, 16) }}</p>
+        </div>
+      </div>
+      <div class="card-body">
+        <button type="button" class="btn btn-sm btn-danger" style="width: 15rem; height: 3rem; font-size: 16px"
+                  (click)="open(content,reservation.reservationId)">Cancel reservation
+        </button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isEmpty">
+    <h5>There are no active reservations</h5>
+  </div>
+</div>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Reservation</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure want to cancel reservation?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Delete reservation')">Yes</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Dismiss')">No</button>
+  </div>
+</ng-template>
