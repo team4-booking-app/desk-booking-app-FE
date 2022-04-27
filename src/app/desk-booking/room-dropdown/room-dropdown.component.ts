@@ -1,71 +1,17 @@
-import {Component, OnInit, Output, EventEmitter, forwardRef, OnDestroy, Input} from '@angular/core';
-import {
-  ControlValueAccessor,
-  NG_VALUE_ACCESSOR,
-  FormBuilder,
-  FormGroup,
-  FormControl
-} from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-room-dropdown',
+  selector: 'app-dropdown',
   templateUrl: './room-dropdown.component.html',
   styleUrls: ['./room-dropdown.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => RoomDropdownComponent),
-      multi: true
-    }
-  ]
 })
-export class RoomDropdownComponent implements OnInit, ControlValueAccessor, OnDestroy {
- roomDropdownForm: FormGroup;
+export class RoomDropdownComponent implements OnInit {
   selectedRoom: number;
-  subscriptions: Subscription[] = [];
 
   @Output() redirectRoom: EventEmitter<any> = new EventEmitter();
-  value: any;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor() {
     this.selectedRoom = 0;
-    this.roomDropdownForm = this.formBuilder.group({
-      roomId: []
-    });
-
-    this.subscriptions.push(
-      // any time the inner form changes update the parent of any change
-      this.roomDropdownForm.valueChanges.subscribe(value => {
-        this.onChange(value);
-        this.onTouched();
-      })
-    );
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.forEach(s => s.unsubscribe());
-  }
-
-  onChange: any = () => {};
-  onTouched: any = () => {};
-
-  registerOnChange(fn: any) {
-    this.onChange = fn;
-  }
-
-  writeValue(value: any) {
-    if (value) {
-      this.value = value;
-    }
-
-    if (value === null) {
-      this.roomDropdownForm.reset();
-    }
-  }
-
-  registerOnTouched(fn: any) {
-    this.onTouched = fn;
   }
 
   ngOnInit(): void {}
@@ -73,11 +19,9 @@ export class RoomDropdownComponent implements OnInit, ControlValueAccessor, OnDe
   selectRoomChangeHandler(event: any) {
     this.selectedRoom = event.target.value;
     this.redirectRoom.emit(this.selectedRoom);
-    console.log(this.selectedRoom)
   }
 
   getSelectedRoom() {
     return this.selectedRoom;
   }
-
 }
