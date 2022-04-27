@@ -39,14 +39,16 @@ export class BookingFormComponent implements OnInit {
     );
   }
 
+  roomDropdown = false;
+  showRoomDropdown() {
+    if (this.bookingForm.value.reservationEnd !== null) {
+      this.roomDropdown = true;
+    }
+  }
+
   toggleShow() {
     this.isShown = false;
     this.isShown = !this.isShown;
-  }
-
-  roomDropdown = false;
-  showRoomDropdown() {
-    this.roomDropdown = true;
   }
 
   createBooking() {

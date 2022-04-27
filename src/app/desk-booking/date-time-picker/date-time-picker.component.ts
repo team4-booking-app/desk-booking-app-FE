@@ -55,7 +55,6 @@ export class DateTimePickerComponent
     this.reservationEnd = '';
 
     this.subscriptions.push(
-      // any time the inner form changes update the parent of any change
       this.dateTimeForm.valueChanges.subscribe((value) => {
         this.onChange(value);
         this.onTouched();
@@ -112,10 +111,5 @@ export class DateTimePickerComponent
 
   ngOnDestroy() {
     this.subscriptions.forEach((s) => s.unsubscribe());
-  }
-
-  roomDropdown = false;
-  showRoomDropdown() {
-    this.roomDropdown = true;
   }
 }
