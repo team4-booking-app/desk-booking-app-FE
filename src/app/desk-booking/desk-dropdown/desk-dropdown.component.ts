@@ -1,14 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { BookingService } from '../booking.service';
-import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.component';
-import { RoomDropdownComponent } from '../room-dropdown/room-dropdown.component';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 export interface Desks {
   deskId: number;
