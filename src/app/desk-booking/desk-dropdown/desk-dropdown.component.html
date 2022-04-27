@@ -1,6 +1,9 @@
-<select (change)="selectDeskChangeHandler($event)">
-  <option disabled selected value>-- select a desk --</option>
-  <option *ngFor="let desk of filteredDesks" [value]="desk.deskId">
-    {{ desk.deskName }}
-  </option>
-</select>
+<div [formGroup]="bookingForm">
+<select (change)="selectDeskChangeHandler($event)" formControlName="deskId">
+    <option disabled selected value>-- select a desk --</option>
+    <option *ngFor="let desk of filteredDesks" [value]="desk.deskId">
+      {{ desk.deskName }}
+    </option>
+  </select>
+</div>
+

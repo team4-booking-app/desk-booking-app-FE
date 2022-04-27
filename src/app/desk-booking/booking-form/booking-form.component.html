@@ -1,24 +1,42 @@
 <form [formGroup]="bookingForm" (ngSubmit)="createBooking()">
-  <app-time-picker (redirectDesks)="deskData = $event"></app-time-picker><br />
-  <app-dropdown
+
+  <app-time-picker [bookingForm]="bookingForm"
+    (redirectDesks)="deskData = $event"
+  ></app-time-picker
+
+  ><br />
+
+  <app-room-dropdown
     (change)="toggleShow()"
     (redirectRoom)="roomData = $event"
-  ></app-dropdown
+  ></app-room-dropdown
+
   ><br />
+
   <ng-container>
     <ng-container *ngIf="isShown">
-      <app-desk-dropdown
+      <app-desk-dropdown [bookingForm]="bookingForm"
         [desks]="deskData"
         [roomOpt]="roomData"
       ></app-desk-dropdown>
     </ng-container>
   </ng-container>
+
   <br />
+
   <button
     type="submit"
     class="btn btn-sm btn-success"
     [disabled]="bookingForm.invalid"
   >
     Confirm booking
+  </button>
+
+  <button
+    type="button"
+    class="btn btn-sm btn-outline-dark m-2"
+    [routerLink]="['/overview']"
+  >
+    Cancel
   </button>
 </form>

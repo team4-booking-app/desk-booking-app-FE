@@ -40,7 +40,6 @@ export class DeskBookingListComponent implements OnInit {
   }
 
   open(content: any, id: any) {
-    console.warn(id);
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       if (result === 'Delete reservation') {
         this.deleteReservation(id);
