@@ -18,7 +18,6 @@ import { BookingService, Desks } from '../booking.service';
 })
 
 export class DateTimePickerComponent implements OnDestroy, ControlValueAccessor  {
-  dateTimeForm: FormGroup;
   subscriptions: Subscription[] = [];
 
   dateTimeForm: FormGroup = new FormGroup({
@@ -68,10 +67,10 @@ export class DateTimePickerComponent implements OnDestroy, ControlValueAccessor 
     this.reservationStart =
       this.dateTimeForm.value.startDate +
       ' ' +
-      this.dateTimeForm.value.startTime;
+      this.dateTimeForm.value.startTime.substring(0,5) + ':00';
 
     this.reservationEnd =
-      this.dateTimeForm.value.startDate + ' ' + this.dateTimeForm.value.endTime;
+      this.dateTimeForm.value.startDate + ' ' + this.dateTimeForm.value.endTime.substring(0,5) + ':00';
     this.Desks$ = this.bookingService.loadDesks(
       this.reservationStart,
       this.reservationEnd
