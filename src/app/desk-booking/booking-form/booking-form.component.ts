@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { BookingService } from '../booking.service';
 
 export interface Desks {
@@ -28,10 +28,10 @@ export class BookingFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.bookingForm = this.formBuilder.group({
-      userEmail: [],
-      deskId: Number,
-      reservationStart: [],
-      reservationEnd: [],
+      userEmail: ['', Validators.required],
+      deskId: ['', Validators.required],
+      reservationStart: ['', Validators.required],
+      reservationEnd: ['', Validators.required],
     });
 
     this.bookingForm.controls['userEmail'].setValue(
