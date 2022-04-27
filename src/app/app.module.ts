@@ -18,6 +18,7 @@ import { DeskDropdownComponent } from './desk-booking/desk-dropdown/desk-dropdow
 import { DateTimePickerComponent } from './desk-booking/date-time-picker/date-time-picker.component';
 import { RoomDropdownComponent } from './desk-booking/room-dropdown/room-dropdown.component';
 import { BookingFormComponent } from './desk-booking/booking-form/booking-form.component';
+import {DeskBookingListComponent} from "./desk-booking-list/desk-booking-list.component";
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { BookingFormComponent } from './desk-booking/booking-form/booking-form.c
     DeskDropdownComponent,
     RoomDropdownComponent,
     BookingFormComponent,
+    DeskBookingListComponent
   ],
   imports: [
     BrowserModule,
