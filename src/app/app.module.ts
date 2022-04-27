@@ -16,6 +16,7 @@ import { HeaderComponent } from './header/header.component';
 import { OverviewComponent } from './overview/overview.component';
 import { DeskBookingComponent } from './desk-booking/desk-booking.component';
 import { RoomDropdownComponent } from './desk-booking/room-dropdown/room-dropdown.component';
+import { DeskBookingListComponent } from './desk-booking-list/desk-booking-list.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { RoomDropdownComponent } from './desk-booking/room-dropdown/room-dropdow
     OverviewComponent,
     DeskBookingComponent,
     RoomDropdownComponent,
+    DeskBookingListComponent,
   ],
   imports: [
     BrowserModule,
