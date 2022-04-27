@@ -1,10 +1,16 @@
-import {Component, OnInit, Output, EventEmitter, forwardRef, OnDestroy, Input} from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  forwardRef,
+  OnDestroy,
+} from '@angular/core';
 import {
   ControlValueAccessor,
   NG_VALUE_ACCESSOR,
   FormBuilder,
   FormGroup,
-  FormControl
 } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -16,12 +22,14 @@ import { Subscription } from 'rxjs';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => RoomDropdownComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
-export class RoomDropdownComponent implements OnInit, ControlValueAccessor, OnDestroy {
- roomDropdownForm: FormGroup;
+export class RoomDropdownComponent
+  implements OnInit, ControlValueAccessor, OnDestroy
+{
+  roomDropdownForm: FormGroup;
   selectedRoom: number;
   subscriptions: Subscription[] = [];
 
@@ -31,12 +39,12 @@ export class RoomDropdownComponent implements OnInit, ControlValueAccessor, OnDe
   constructor(private formBuilder: FormBuilder) {
     this.selectedRoom = 0;
     this.roomDropdownForm = this.formBuilder.group({
-      roomId: []
+      roomId: [],
     });
 
     this.subscriptions.push(
       // any time the inner form changes update the parent of any change
-      this.roomDropdownForm.valueChanges.subscribe(value => {
+      this.roomDropdownForm.valueChanges.subscribe((value) => {
         this.onChange(value);
         this.onTouched();
       })
@@ -44,7 +52,7 @@ export class RoomDropdownComponent implements OnInit, ControlValueAccessor, OnDe
   }
 
   ngOnDestroy() {
-    this.subscriptions.forEach(s => s.unsubscribe());
+    this.subscriptions.forEach((s) => s.unsubscribe());
   }
 
   onChange: any = () => {};
@@ -78,5 +86,4 @@ export class RoomDropdownComponent implements OnInit, ControlValueAccessor, OnDe
   getSelectedRoom() {
     return this.selectedRoom;
   }
-
 }
