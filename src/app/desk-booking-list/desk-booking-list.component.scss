@@ -1,0 +1,72 @@
+.bg-custom{
+  background: #5AAE8F;
+}
+
+hr{
+  width: auto;
+  max-width: 95%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 2rem;
+  height: 3px;
+  border-radius: 30px 30px 30px 30px;
+}
+
+.w-fit{
+  width: fit-content;
+}
+.h-fit{
+  height: fit-content;
+}
+
+.right{
+  display: flex;
+  justify-content: right;
+}
+
+.left{
+  display: flex;
+  justify-content: left;
+}
+
+.center-content{
+  display: flex;
+  justify-content: center;
+}
+
+.margin-right-20{
+  margin-right: 20%;
+}
+
+.margin-left-20{
+  margin-left: 20%;
+}
+
+.margin-left-5{
+  margin-left: 5%;
+}
+
+.margin-right-5{
+  margin-right: 5%;
+}
+
+.card-detail{
+  background: #fff;
+  text-align: center;
+  border-radius: 30px 30px 30px 30px;
+  padding: 5px 20px 5px 20px;
+  font-size: 17px;
+  color: black;
+  width: 100%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.max-w{
+  max-width: 430px;
+  min-width: 430px;
+}

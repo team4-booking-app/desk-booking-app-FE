@@ -4,6 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {OverviewComponent} from './overview/overview.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AuthGuard} from "./auth/auth.guard";
+import { DeskBookingListComponent } from './desk-booking-list/desk-booking-list.component';
 import { BookingFormComponent } from './desk-booking/booking-form/booking-form.component';
 
 const routes: Routes = [
@@ -15,6 +16,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'confirmation', component: ConfirmationPageComponent, canActivate:[AuthGuard] },
+  {
+    path: 'cancellation',
+    component: DeskBookingListComponent,
+    canActivate: [AuthGuard],
+  },
   { path: '**', component: PageNotFoundComponent },
 ];
 

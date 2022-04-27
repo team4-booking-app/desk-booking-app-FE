@@ -16,9 +16,17 @@ import { BookingService, Desks } from '../booking.service';
     },
   ]
 })
+
 export class DateTimePickerComponent implements OnDestroy, ControlValueAccessor  {
   dateTimeForm: FormGroup;
   subscriptions: Subscription[] = [];
+
+  dateTimeForm: FormGroup = new FormGroup({
+    startDate: new FormControl('2022-04-27'),
+    startTime: new FormControl('09:00:00'),
+    endTime: new FormControl('17:00:00'),
+  });
+
 
   onChange: any = () => {};
   onTouched: any = () => {};
