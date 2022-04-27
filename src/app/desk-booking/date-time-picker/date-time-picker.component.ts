@@ -21,7 +21,7 @@ export class DateTimePickerComponent implements OnDestroy, ControlValueAccessor 
   subscriptions: Subscription[] = [];
 
   dateTimeForm: FormGroup = new FormGroup({
-    startDate: new FormControl('2022-05-02'),
+    startDate: new FormControl('2022-04-27'),
     startTime: new FormControl('09:00:00'),
     endTime: new FormControl('17:00:00'),
   });
@@ -61,10 +61,10 @@ export class DateTimePickerComponent implements OnDestroy, ControlValueAccessor 
     this.reservationStart =
       this.dateTimeForm.value.startDate +
       ' ' +
-      this.dateTimeForm.value.startTime.substring(0,5) + ':00';
+      this.dateTimeForm.value.startTime;
 
     this.reservationEnd =
-      this.dateTimeForm.value.startDate + ' ' + this.dateTimeForm.value.endTime.substring(0,5) + ':00';
+      this.dateTimeForm.value.startDate + ' ' + this.dateTimeForm.value.endTime;
     this.Desks$ = this.bookingService.loadDesks(
       this.reservationStart,
       this.reservationEnd
@@ -98,17 +98,4 @@ export class DateTimePickerComponent implements OnDestroy, ControlValueAccessor 
   ngOnDestroy() {
     this.subscriptions.forEach(s => s.unsubscribe());
   }
-
-
-
-
-
-
 }
-
-
-
-
-
-
-

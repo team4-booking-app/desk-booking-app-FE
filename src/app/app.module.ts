@@ -33,7 +33,6 @@ import {DeskBookingListComponent} from "./desk-booking-list/desk-booking-list.co
     ConfirmationPageComponent,
     DateTimePickerComponent,
     BookingFormComponent,
-    DeskDropdownComponent,
     DeskBookingListComponent
   ],
   imports: [
@@ -48,7 +47,6 @@ import {DeskBookingListComponent} from "./desk-booking-list/desk-booking-list.co
     PopoverModule.forRoot(),
     BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot(),
-    CountdownModule
   ],
   providers: [],
   bootstrap: [AppComponent],
