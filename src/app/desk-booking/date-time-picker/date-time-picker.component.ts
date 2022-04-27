@@ -21,7 +21,7 @@ export class DateTimePickerComponent implements OnDestroy, ControlValueAccessor 
   subscriptions: Subscription[] = [];
 
   dateTimeForm: FormGroup = new FormGroup({
-    startDate: new FormControl('2022-04-27'),
+    startDate: new FormControl('2022-05-02'),
     startTime: new FormControl('09:00:00'),
     endTime: new FormControl('17:00:00'),
   });
@@ -38,12 +38,6 @@ export class DateTimePickerComponent implements OnDestroy, ControlValueAccessor 
   constructor(private bookingService: BookingService, private formBuilder: FormBuilder) {
     this.reservationStart = '';
     this.reservationEnd = '';
-
-    this.dateTimeForm = this.formBuilder.group({
-      startDate: new FormControl('2022-04-21'),
-      startTime: new FormControl('09:00:00'),
-      endTime: new FormControl('17:00:00'),
-    });
 
     this.subscriptions.push(
       // any time the inner form changes update the parent of any change
