@@ -73,7 +73,6 @@ export class RoomDropdownComponent implements OnInit, ControlValueAccessor, OnDe
   selectRoomChangeHandler(event: any) {
     this.selectedRoom = event.target.value;
     this.redirectRoom.emit(this.selectedRoom);
-    console.log(this.selectedRoom)
   }
 
   getSelectedRoom() {

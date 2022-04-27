@@ -33,8 +33,6 @@ export class BookingFormComponent implements OnInit {
     });
 
     this.bookingForm.controls['userEmail'].setValue(this.bookingService.getUserEmail());
-
-    this.bookingForm.valueChanges.subscribe(newVal => console.log(newVal));
   }
 
   toggleShow() {
@@ -44,7 +42,6 @@ export class BookingFormComponent implements OnInit {
 
 
   createBooking() {
-    console.log(this.bookingForm.value);
     this.bookingService.createBooking(this.bookingForm.value).subscribe(
         () => {
           this.router.navigate(['/confirmation'], {

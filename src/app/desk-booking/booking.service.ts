@@ -48,7 +48,6 @@ export class BookingService {
   }
 
   createBooking(data: any): Observable<any> {
-    console.log(this.decodedToken)
       return this.http.post<any>(this.resUrl, data, this.httpOptions);
   }
 

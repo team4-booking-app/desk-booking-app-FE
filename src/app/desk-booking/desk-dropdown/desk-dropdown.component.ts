@@ -95,7 +95,6 @@ export class DeskDropdownComponent implements OnInit, OnChanges, ControlValueAcc
 
   selectDeskChangeHandler(event: any) {
     this.selectedDesk = event.target.value;
-    console.log(this.selectedDesk);
   }
 
   getSelectedDesk() {
