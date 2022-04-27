@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { BookingService } from '../booking.service';
+import {Observable, of} from "rxjs";
+import {Reservation} from "../../shared/reservation";
+import {ReservationsService} from "../../services/reservations.service";
+import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 export interface Desks {
   deskId: number;
@@ -19,11 +23,15 @@ export class BookingFormComponent implements OnInit {
   isShown: boolean = false;
   deskData: any;
   roomData: any;
+  closeResult = '';
+  reservationsList$: Observable<Reservation[]> = of();
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private bookingService: BookingService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private reservationService: ReservationsService,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
@@ -37,6 +45,7 @@ export class BookingFormComponent implements OnInit {
     this.bookingForm.controls['userEmail'].setValue(
       this.bookingService.getUserEmail()
     );
+    this.reservationsList$ = this.reservationService.loadReservations().pipe();
   }
 
   roomDropdown = false;
@@ -57,5 +66,23 @@ export class BookingFormComponent implements OnInit {
         queryParams: { reservation: 'success' },
       });
     });
+  }
+
+  open(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${BookingFormComponent.getDismissReason(reason)}`;
+    });
+  }
+
+  private static getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 }
