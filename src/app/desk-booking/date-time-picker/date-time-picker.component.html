@@ -1,4 +1,4 @@
-<div [formGroup]="dateTimeForm" >
+<div [formGroup]="dateTimeForm">
   <label for="meeting-time">Select date and time for desk reservation:</label
   ><br />
   <div>
@@ -7,7 +7,7 @@
       id="meeting-time"
       name="meeting-time"
       formControlName="startDate"
-      min="2022-04-27"
+      min="2022-04-30"
     />
     <input
       type="time"
@@ -25,5 +25,12 @@
     />
   </div>
   <br />
-  <button type="button" class="btn btn-sm btn-danger" (click)="selectReservationDate()">Confirm date</button>
+  <button
+    type="button"
+    class="btn btn-sm btn-danger"
+    [disabled]="dateTimeForm.invalid"
+    (click)="selectReservationDate(); showRoomDropdown()"
+  >
+    Confirm date
+  </button>
 </div>
