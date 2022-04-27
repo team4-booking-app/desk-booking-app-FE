@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 export interface Desks {
   deskId: number;
@@ -11,11 +12,27 @@ export interface Desks {
   providedIn: 'root',
 })
 export class BookingService {
-  constructor(private http: HttpClient) {}
+
+  private token = localStorage.getItem('auth');
+  private helper = new JwtHelperService();
+  private decodedToken = this.helper.decodeToken(this.token!);
+
+  private resUrl = 'https://team4-backend-stage-app.herokuapp.com/api/v1/reservations';
 
   private desksURL = new URL(
     'https://team4-backend-stage-app.herokuapp.com/api/v1/desks/available'
   );
+
+
+
+  constructor(private http: HttpClient, ) {}
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      Authorization: this.decodedToken.sub,
+    })
+  };
 
   loadDesks(reservationStart: any, reservationEnd: any): Observable<Desks[]> {
     this.desksURL.searchParams.delete('reservationStart');
@@ -25,4 +42,18 @@ export class BookingService {
     this.desksURL.searchParams.append('reservationEnd', reservationEnd);
     return this.http.get<Desks[]>(this.desksURL.href);
   }
+
+  getUserEmail(){
+    return this.decodedToken.sub;;
+  }
+
+  createBooking(data: any): Observable<any> {
+    console.log(this.decodedToken)
+      return this.http.post<any>(this.resUrl, data, this.httpOptions);
+  }
+
+
+
+
+
 }

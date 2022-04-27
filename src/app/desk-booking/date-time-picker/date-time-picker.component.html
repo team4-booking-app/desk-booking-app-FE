@@ -1,5 +1,5 @@
-<form [formGroup]="dateTimeForm" (ngSubmit)="selectReservationDate()">
-  <label for="meeting-time">Select date and time for your reservation:</label
+<div [formGroup]="dateTimeForm" >
+  <label for="meeting-time">Select date and time for desk reservation:</label
   ><br />
   <div>
     <input
@@ -7,7 +7,7 @@
       id="meeting-time"
       name="meeting-time"
       formControlName="startDate"
-      min="2022-04-27"
+      min="2022-05-02"
     />
     <input
       type="time"
@@ -25,5 +25,5 @@
     />
   </div>
   <br />
-  <button type="submit" class="btn btn-sm btn-danger">Confirm date</button>
-</form>
+  <button type="button" class="btn btn-sm btn-danger" (click)="selectReservationDate()">Confirm date</button>
+</div>

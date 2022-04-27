@@ -1,3 +1,4 @@
+import { DeskDropdownComponent } from './desk-booking/desk-dropdown/desk-dropdown.component';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,9 +15,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { OverviewComponent } from './overview/overview.component';
-import { DeskDropdownComponent } from './desk-booking/desk-dropdown/desk-dropdown.component';
-import { DateTimePickerComponent } from './desk-booking/date-time-picker/date-time-picker.component';
 import { RoomDropdownComponent } from './desk-booking/room-dropdown/room-dropdown.component';
+import { ConfirmationPageComponent } from './desk-booking/confirmation-page/confirmation-page.component';
+import { CountdownModule } from "ngx-countdown";
+import { DateTimePickerComponent } from './desk-booking/date-time-picker/date-time-picker.component';
 import { BookingFormComponent } from './desk-booking/booking-form/booking-form.component';
 import {DeskBookingListComponent} from "./desk-booking-list/desk-booking-list.component";
 
@@ -27,9 +29,9 @@ import {DeskBookingListComponent} from "./desk-booking-list/desk-booking-list.co
     FooterComponent,
     HeaderComponent,
     OverviewComponent,
-    DateTimePickerComponent,
-    DeskDropdownComponent,
     RoomDropdownComponent,
+    ConfirmationPageComponent,
+    DateTimePickerComponent,
     BookingFormComponent,
     DeskDropdownComponent,
     DeskBookingListComponent
