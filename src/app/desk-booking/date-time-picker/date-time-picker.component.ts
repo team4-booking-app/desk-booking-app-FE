@@ -121,5 +121,8 @@ export class DateTimePickerComponent
   showMessage() {
     this.isShown = false;
     this.isShown = !this.isShown;
+    setTimeout(() => {
+      this.isShown = !this.isShown;
+    }, 5000);
   }
 }
