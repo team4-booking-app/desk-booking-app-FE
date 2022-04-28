@@ -22,8 +22,8 @@
     </ng-container>
   <br />
   <div>
-    <div *ngIf="(reservationsList$ | async) as reservations">
-      <div *ngIf="reservations.length < 3">
+    <div>
+      <div *ngIf="listLength < 3">
         <button
           type="submit"
           class="btn btn-sm btn-success"
@@ -41,7 +41,7 @@
         </button>
       </div>
         <div>
-          <div *ngIf="reservations.length >= 3">
+          <div *ngIf="listLength >= 3">
             <button
               type="none"
               class="btn btn-sm btn-success"

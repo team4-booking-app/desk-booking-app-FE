@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { BookingService } from '../booking.service';
-import {Observable, of} from "rxjs";
+import {Observable, of, tap} from "rxjs";
 import {Reservation} from "../../shared/reservation";
 import {ReservationsService} from "../../services/reservations.service";
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
@@ -25,6 +25,7 @@ export class BookingFormComponent implements OnInit {
   roomData: any;
   closeResult = '';
   reservationsList$: Observable<Reservation[]> = of();
+  listLength = 0;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -45,7 +46,16 @@ export class BookingFormComponent implements OnInit {
     this.bookingForm.controls['userEmail'].setValue(
       this.bookingService.getUserEmail()
     );
-    this.reservationsList$ = this.reservationService.loadReservations().pipe();
+    this.reservationService.loadReservations().subscribe(
+      result => {
+        this.listLength = result.length;
+      },
+      error => {
+        this.listLength = 0;
+      }
+
+    );
+    console.log(typeof(this.reservationsList$));
   }
 
   roomDropdown = false;
