@@ -27,7 +27,7 @@
   <br />
   <button
     type="button"
-    class="btn btn-sm btn-info"
+    class="btn btn-sm btn-success"
     [disabled]="dateTimeForm.invalid"
     (click)="selectReservationDate()"
     (click)="showMessage()"
@@ -37,6 +37,6 @@
   <br />
   <br />
   <ng-container *ngIf="isShown">
-    <p>Your date has been confirmed!</p>
+    <p class="alert alert-success" >Your date has been confirmed!</p>
   </ng-container>
 </div>
