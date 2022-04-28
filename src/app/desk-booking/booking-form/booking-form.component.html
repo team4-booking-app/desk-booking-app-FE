@@ -1,14 +1,13 @@
 <form
   [formGroup]="bookingForm"
   (ngSubmit)="createBooking()"
-  class="col-md-4 mx-auto card card shadow-lg card-body p-4 border border-dark rounded"
+  class="col-md-4 mx-auto card card shadow-lg card-body p-4 border border-3 rounded"
 >
   <app-time-picker
     [bookingForm]="bookingForm"
     (redirectDesks)="deskData = $event"
     (click)="showRoomDropdown()"
-  ></app-time-picker
-  ><br />
+  ></app-time-picker>
 
   <app-room-dropdown
     *ngIf="roomDropdown"
@@ -28,7 +27,7 @@
 
   <button
     type="submit"
-    class="btn btn-sm btn-success"
+    class="btn btn-xl btn-success"
     [disabled]="bookingForm.invalid"
   >
     Confirm booking
@@ -36,7 +35,7 @@
 
   <button
     type="button"
-    class="btn btn-sm btn-outline-dark m-2"
+    class="btn btn-xl btn-outline-dark m-2"
     [routerLink]="['/overview']"
   >
     Cancel
