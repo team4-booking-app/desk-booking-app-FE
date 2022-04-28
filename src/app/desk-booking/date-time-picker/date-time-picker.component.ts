@@ -36,7 +36,7 @@ export class DateTimePickerComponent
   isShown: boolean = false;
 
   dateTimeForm: FormGroup = new FormGroup({
-    startDate: new FormControl('2022-04-30', Validators.required),
+    startDate: new FormControl('2022-05-02', Validators.required),
     startTime: new FormControl('09:00:00', Validators.required),
     endTime: new FormControl('17:00:00', Validators.required),
   });
