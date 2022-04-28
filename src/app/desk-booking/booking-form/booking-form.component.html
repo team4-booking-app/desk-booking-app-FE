@@ -1,4 +1,8 @@
-<form [formGroup]="bookingForm" (ngSubmit)="createBooking()">
+<form
+  [formGroup]="bookingForm"
+  (ngSubmit)="createBooking()"
+  class="col-md-4 mx-auto card card shadow-lg card-body p-4 border border-dark rounded"
+>
   <app-time-picker
     [bookingForm]="bookingForm"
     (redirectDesks)="deskData = $event"
@@ -13,13 +17,13 @@
   ></app-room-dropdown
   ><br />
 
-    <ng-container *ngIf="isShown">
-      <app-desk-dropdown
-        [bookingForm]="bookingForm"
-        [desks]="deskData"
-        [roomOpt]="roomData"
-      ></app-desk-dropdown>
-    </ng-container>
+  <ng-container *ngIf="isShown">
+    <app-desk-dropdown
+      [bookingForm]="bookingForm"
+      [desks]="deskData"
+      [roomOpt]="roomData"
+    ></app-desk-dropdown>
+  </ng-container>
   <br />
 
   <button
