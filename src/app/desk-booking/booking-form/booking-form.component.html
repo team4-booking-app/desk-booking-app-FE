@@ -1,10 +1,12 @@
-<form [formGroup]="bookingForm">
+<form
+  [formGroup]="bookingForm"
+  class="col-md-4 mx-auto card card shadow-lg card-body p-4 border border-3 rounded"
+>
   <app-time-picker
     [bookingForm]="bookingForm"
     (redirectDesks)="deskData = $event"
     (click)="showRoomDropdown()"
-  ></app-time-picker
-  ><br />
+  ></app-time-picker>
 
   <app-room-dropdown
     *ngIf="roomDropdown"
@@ -13,13 +15,13 @@
   ></app-room-dropdown
   ><br />
 
-    <ng-container *ngIf="isShown">
-      <app-desk-dropdown
-        [bookingForm]="bookingForm"
-        [desks]="deskData"
-        [roomOpt]="roomData"
-      ></app-desk-dropdown>
-    </ng-container>
+  <ng-container *ngIf="isShown">
+    <app-desk-dropdown
+      [bookingForm]="bookingForm"
+      [desks]="deskData"
+      [roomOpt]="roomData"
+    ></app-desk-dropdown>
+  </ng-container>
   <br />
   <div>
     <div>
@@ -40,19 +42,19 @@
           Cancel
         </button>
       </div>
-        <div>
-          <div *ngIf="listLength >= 3">
-            <button
-              type="none"
-              class="btn btn-sm btn-success"
-              [disabled]="bookingForm.invalid"
-              (click)="open(content)"
-            >
-              Confirm booking
-            </button>
+      <div>
+        <div *ngIf="listLength >= 3">
+          <button
+            type="none"
+            class="btn btn-sm btn-success"
+            [disabled]="bookingForm.invalid"
+            (click)="open(content)"
+          >
+            Confirm booking
+          </button>
           <button
             type="button"
-            class="btn btn-sm btn-outline-dark m-2"
+            class="btn btn-sm btn-outline-dark"
             [routerLink]="['/overview']"
           >
             Cancel
@@ -65,14 +67,34 @@
 <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Error</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
   </div>
   <div class="modal-body">
-    <p>You have too many reservations, maximum is 3. Please cancel one before booking.</p>
+    <p>
+      You have too many reservations, maximum is 3. Please cancel one before
+      booking.
+    </p>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Go to cancellation')" [routerLink]="['/cancellation']">Go to cancellation</button>
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Close')">Close</button>
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modal.close('Go to cancellation')"
+      [routerLink]="['/cancellation']"
+    >
+      Go to cancellation
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modal.close('Close')"
+    >
+      Close
+    </button>
   </div>
 </ng-template>
-
