@@ -24,7 +24,6 @@ export class BookingFormComponent implements OnInit {
   deskData: any;
   roomData: any;
   closeResult = '';
-  reservationsList$: Observable<Reservation[]> = of();
   listLength = 0;
   constructor(
     private router: Router,
@@ -55,7 +54,6 @@ export class BookingFormComponent implements OnInit {
       }
 
     );
-    console.log(typeof(this.reservationsList$));
   }
 
   roomDropdown = false;
